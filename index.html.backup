@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>2024 차 음료 소비 트렌드 혁명 | AI Content Creation Team</title>
+    <meta name="description" content="RTD 시장 혁신과 소비자 행동 변화 분석. 4,159억원 액상차 시장의 9.8% 성장률과 79.7% RTD 점유율 인사이트를 확인하세요.">
+    <meta name="keywords" content="차음료트렌드, RTD시장, 액상차, 음료시장분석, 2024트렌드, 소비자분석">
+    <meta name="author" content="AI Content Creation Team">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="2024 차 음료 소비 트렌드 혁명">
+    <meta property="og:description" content="RTD 시장 혁신과 소비자 행동 변화 분석">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="#"> <!-- 실제 URL로 변경 필요 -->
+    <meta property="og:image" content="./assets/images/og-image.jpg">
+    
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="./assets/css/main.css" as="style">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" as="style">
+    
+    <!-- Stylesheets -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/main.css">
+    <link rel="stylesheet" href="./assets/css/components.css">
+    <link rel="stylesheet" href="./assets/css/animations.css">
+    
+    <!-- AOS Library for Scroll Animations -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="./assets/images/favicon.ico">
+</head>
+
+<body>
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="progress-bar"></div>
+    
+    <!-- Header -->
+    <header class="header" id="header">
+        <nav class="nav container">
+            <div class="nav__brand">
+                <h1 class="nav__logo">AI Content Creation Team</h1>
+            </div>
+            
+            <ul class="nav__menu" id="nav-menu">
+                <li class="nav__item">
+                    <a href="#market" class="nav__link">시장현황</a>
+                </li>
+                <li class="nav__item">
+                    <a href="#trends" class="nav__link">트렌드</a>
+                </li>
+                <li class="nav__item">
+                    <a href="#consumer" class="nav__link">소비자분석</a>
+                </li>
+                <li class="nav__item">
+                    <a href="#forecast" class="nav__link">전망</a>
+                </li>
+                <li class="nav__item">
+                    <a href="#insights" class="nav__link">인사이트</a>
+                </li>
+            </ul>
+            
+            <div class="nav__actions">
+                <a href="#download" class="btn btn--primary">
+                    <span>보고서 다운로드</span>
+                    <svg class="btn__icon" width="16" height="16" viewBox="0 0 16 16">
+                        <path d="M8 12l-4-4h2.5V4h3v4H12l-4 4z"/>
+                    </svg>
+                </a>
+                
+                <!-- Mobile Menu Toggle -->
+                <button class="nav__toggle" id="nav-toggle" aria-label="메뉴 토글">
+                    <span class="nav__toggle-line"></span>
+                    <span class="nav__toggle-line"></span>
+                    <span class="nav__toggle-line"></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        
+        <!-- Hero Section -->
+        <section class="hero" id="hero">
+            <div class="hero__bg">
+                <div class="hero__pattern"></div>
+            </div>
+            
+            <div class="container">
+                <div class="hero__content" data-aos="fade-up">
+                    <h1 class="hero__title">
+                        <span class="hero__title-main">2024 차 음료 소비</span>
+                        <span class="hero__title-accent">트렌드 혁명</span>
+                    </h1>
+                    
+                    <p class="hero__subtitle">
+                        RTD 시장 혁신과 소비자 행동 변화 분석
+                    </p>
+                    
+                    <!-- Key Statistics -->
+                    <div class="hero__stats">
+                        <div class="stat-card" data-aos="fade-up" data-aos-delay="100">
+                            <div class="stat-card__value" data-target="4159">0</div>
+                            <div class="stat-card__unit">억원</div>
+                            <div class="stat-card__label">액상차 시장규모</div>
+                        </div>
+                        
+                        <div class="stat-card" data-aos="fade-up" data-aos-delay="200">
+                            <div class="stat-card__value" data-target="9.8">0</div>
+                            <div class="stat-card__unit">%</div>
+                            <div class="stat-card__label">연평균 성장률</div>
+                        </div>
+                        
+                        <div class="stat-card" data-aos="fade-up" data-aos-delay="300">
+                            <div class="stat-card__value" data-target="79.7">0</div>
+                            <div class="stat-card__unit">%</div>
+                            <div class="stat-card__label">RTD 시장점유율</div>
+                        </div>
+                    </div>
+                    
+                    <div class="hero__cta" data-aos="fade-up" data-aos-delay="400">
+                        <a href="#market" class="btn btn--secondary">
+                            <span>인사이트 확인하기</span>
+                            <svg class="btn__icon" width="16" height="16" viewBox="0 0 16 16">
+                                <path d="M8 4l4 4-4 4V9H4V7h4V4z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Scroll Indicator -->
+                <div class="hero__scroll" data-aos="fade-up" data-aos-delay="600">
+                    <div class="scroll-indicator">
+                        <span class="scroll-indicator__text">Scroll</span>
+                        <div class="scroll-indicator__arrow"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 1: Market Analysis -->
+        <section class="section section--market" id="market">
+            <div class="container">
+                <header class="section__header" data-aos="fade-up">
+                    <span class="section__tag">Section 01</span>
+                    <h2 class="section__title">숫자로 보는 차 음료 시장의 성장</h2>
+                    <p class="section__description">
+                        전체 차 음료 시장에서 액상차가 차지하는 비중과 성장률을 통해 
+                        시장의 구조적 변화를 살펴봅니다.
+                    </p>
+                </header>
+                
+                <div class="market__grid">
+                    <!-- Market Size Comparison -->
+                    <div class="market__item" data-aos="fade-right">
+                        <div class="chart-container">
+                            <h3 class="chart__title">시장 규모 비교</h3>
+                            <div class="chart__wrapper">
+                                <canvas id="market-size-chart" width="300" height="300"></canvas>
+                            </div>
+                            <div class="chart__legend">
+                                <div class="legend__item">
+                                    <span class="legend__color legend__color--liquid"></span>
+                                    <span class="legend__label">액상차 (4,159억원)</span>
+                                </div>
+                                <div class="legend__item">
+                                    <span class="legend__color legend__color--tea-bag"></span>
+                                    <span class="legend__label">티백차 (2,847억원)</span>
+                                </div>
+                                <div class="legend__item">
+                                    <span class="legend__color legend__color--powder"></span>
+                                    <span class="legend__label">분말차 (1,293억원)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Growth Trend -->
+                    <div class="market__item" data-aos="fade-left">
+                        <div class="chart-container">
+                            <h3 class="chart__title">성장률 추이</h3>
+                            <div class="chart__wrapper">
+                                <canvas id="growth-trend-chart" width="400" height="300"></canvas>
+                            </div>
+                            <div class="growth-stats">
+                                <div class="growth-stat">
+                                    <span class="growth-stat__year">2021-2024</span>
+                                    <span class="growth-stat__rate">+9.8%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- RTD Market Forecast -->
+                    <div class="market__item market__item--full" data-aos="fade-up">
+                        <div class="forecast-card">
+                            <div class="forecast-card__content">
+                                <h3 class="forecast-card__title">RTD 시장 전망</h3>
+                                <p class="forecast-card__description">
+                                    Ready-to-Drink 차 음료는 2025년까지 연평균 4%의 
+                                    지속적인 성장이 예상됩니다.
+                                </p>
+                                <div class="forecast-card__stats">
+                                    <div class="forecast-stat">
+                                        <span class="forecast-stat__label">2024년 예상</span>
+                                        <span class="forecast-stat__value">4,565억원</span>
+                                    </div>
+                                    <div class="forecast-stat">
+                                        <span class="forecast-stat__label">2025년 전망</span>
+                                        <span class="forecast-stat__value">4,748억원</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="forecast-card__visual">
+                                <canvas id="rtd-forecast-chart" width="200" height="150"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Global Comparison -->
+                    <div class="market__item market__item--full" data-aos="fade-up" data-aos-delay="100">
+                        <div class="global-comparison">
+                            <h3 class="global-comparison__title">글로벌 RTD 차 시장 비교</h3>
+                            <div class="global-stats">
+                                <div class="global-stat">
+                                    <div class="global-stat__country">한국</div>
+                                    <div class="global-stat__bar">
+                                        <div class="global-stat__fill" style="width: 15%"></div>
+                                    </div>
+                                    <div class="global-stat__value">4.2조원</div>
+                                </div>
+                                <div class="global-stat">
+                                    <div class="global-stat__country">미국</div>
+                                    <div class="global-stat__bar">
+                                        <div class="global-stat__fill" style="width: 35%"></div>
+                                    </div>
+                                    <div class="global-stat__value">12.1조원</div>
+                                </div>
+                                <div class="global-stat">
+                                    <div class="global-stat__country">중국</div>
+                                    <div class="global-stat__bar">
+                                        <div class="global-stat__fill" style="width: 100%"></div>
+                                    </div>
+                                    <div class="global-stat__value">34.7조원</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: 4 Mega Trends -->
+        <section class="section section--trends" id="trends">
+            <div class="container">
+                <header class="section__header" data-aos="fade-up">
+                    <span class="section__tag">Section 02</span>
+                    <h2 class="section__title">2024년을 관통하는 4가지 핵심 트렌드</h2>
+                    <p class="section__description">
+                        시장을 이끄는 주요 흐름과 소비자 니즈 변화를 
+                        4개의 메가트렌드로 정리했습니다.
+                    </p>
+                </header>
+                
+                <div class="trends__grid">
+                    <!-- Trend 1: ZERO Revolution -->
+                    <article class="trend-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="trend-card__icon">
+                            <svg width="48" height="48" viewBox="0 0 48 48">
+                                <circle cx="24" cy="24" r="20" fill="none" stroke="currentColor" stroke-width="3"/>
+                                <path d="M16 24h16M24 16v16" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <div class="trend-card__content">
+                            <h3 class="trend-card__title">
+                                <span class="trend-card__emoji">🥤</span>
+                                ZERO 혁명
+                            </h3>
+                            <p class="trend-card__description">
+                                건강한 즐거움을 추구하는 헬시플레저 트렌드로 
+                                제로칼로리, 제로설탕 제품이 급성장하고 있습니다.
+                            </p>
+                            <ul class="trend-card__features">
+                                <li>제로칼로리 선호도 73% 증가</li>
+                                <li>당류 무첨가 제품 출시 확산</li>
+                                <li>천연 감미료 사용 확대</li>
+                            </ul>
+                        </div>
+                        <div class="trend-card__overlay"></div>
+                    </article>
+
+                    <!-- Trend 2: Convenience Maximization -->
+                    <article class="trend-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="trend-card__icon">
+                            <svg width="48" height="48" viewBox="0 0 48 48">
+                                <rect x="8" y="12" width="32" height="24" rx="4" fill="none" stroke="currentColor" stroke-width="2"/>
+                                <path d="M20 20l8-8M28 28l-8 8" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <div class="trend-card__content">
+                            <h3 class="trend-card__title">
+                                <span class="trend-card__emoji">⚡</span>
+                                편의성 극대화
+                            </h3>
+                            <p class="trend-card__description">
+                                RTD 제품의 급성장과 대용량 트렌드로 
+                                언제 어디서나 간편하게 즐기는 문화가 확산됩니다.
+                            </p>
+                            <ul class="trend-card__features">
+                                <li>RTD 매출 42% 성장</li>
+                                <li>대용량(1L+) 판매 증가</li>
+                                <li>온라인 묶음구매 선호</li>
+                            </ul>
+                        </div>
+                        <div class="trend-card__overlay"></div>
+                    </article>
+
+                    <!-- Trend 3: Premium Experience -->
+                    <article class="trend-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="trend-card__icon">
+                            <svg width="48" height="48" viewBox="0 0 48 48">
+                                <path d="M24 4l6 12h12l-10 8 4 12-12-8-12 8 4-12-10-8h12l6-12z" fill="none" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <div class="trend-card__content">
+                            <h3 class="trend-card__title">
+                                <span class="trend-card__emoji">✨</span>
+                                프리미엄 경험
+                            </h3>
+                            <p class="trend-card__description">
+                                콜드브루 기법과 허브 블렌딩으로 
+                                고급화된 맛과 경험을 제공하는 브랜드가 주목받습니다.
+                            </p>
+                            <ul class="trend-card__features">
+                                <li>콜드브루 제품 라인업 확대</li>
+                                <li>허브 블렌딩 기법 도입</li>
+                                <li>장인정신 스토리텔링</li>
+                            </ul>
+                        </div>
+                        <div class="trend-card__overlay"></div>
+                    </article>
+
+                    <!-- Trend 4: Personalized Segmentation -->
+                    <article class="trend-card" data-aos="fade-up" data-aos-delay="400">
+                        <div class="trend-card__icon">
+                            <svg width="48" height="48" viewBox="0 0 48 48">
+                                <circle cx="24" cy="14" r="6" fill="none" stroke="currentColor" stroke-width="2"/>
+                                <path d="M12 40v-8c0-6 6-10 12-10s12 4 12 10v8" fill="none" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <div class="trend-card__content">
+                            <h3 class="trend-card__title">
+                                <span class="trend-card__emoji">👤</span>
+                                개인화 세분화
+                            </h3>
+                            <p class="trend-card__description">
+                                디카페인부터 고카페인까지, 개인의 라이프스타일에 
+                                맞춘 맞춤형 옵션이 다양해지고 있습니다.
+                            </p>
+                            <ul class="trend-card__features">
+                                <li>카페인 함량별 세분화</li>
+                                <li>기능성 성분 강화</li>
+                                <li>생활패턴별 맞춤 옵션</li>
+                            </ul>
+                        </div>
+                        <div class="trend-card__overlay"></div>
+                    </article>
+                </div>
+            </div>
+        </section>
