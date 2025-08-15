@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="2025년 차 음료 시장 전망 - AI 기술 도입, 신흥 트렌드 예측, 1인 비즈니스 기회 분석">
+    <meta name="keywords" content="2025 전망, 차 음료, 시장 예측, 신흥 트렌드, 비즈니스 기회">
+    <meta name="author" content="AI Content Creation Team">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="2025년 차 음료 시장 전망 | Tea Trend 2024">
+    <meta property="og:description" content="데이터 분석을 바탕으로 한 2025년 시장 전망과 새롭게 부상할 비즈니스 기회를 예측합니다">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="#">
+    <meta property="og:image" content="#">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="2025년 차 음료 시장 전망">
+    <meta name="twitter:description" content="2025년 시장 전망과 새롭게 부상할 비즈니스 기회 예측">
+    
+    <title>2025 전망 | Tea Trend 2024</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTE2IDNDMTEuNTggMyA4IDYuNTggOCAxMUM4IDEzLjUgOSAxNS43NSAxMC41IDE3LjVMMTYgMjhMMjEuNSAxNy41QzIzIDE1Ljc1IDI0IDEzLjUgMjQgMTFDMjQgNi41OCAyMC40MiAzIDE2IDNaTTE2IDEzQzE0LjkgMTMgMTQgMTIuMSAxNCAxMUMxNCA5LjkgMTQuOSA5IDE2IDlDMTcuMSA5IDE4IDkuOSAxOCAxMUMxOCAxMi4xIDE3LjEgMTMgMTYgMTNaIiBmaWxsPSIjNDI4ODZCIi8+Cjwvc3ZnPgo=">
+    
+    <!-- External CDN Resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Chart.js CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.min.js"></script>
+    
+    <!-- AOS (Animate On Scroll) CDN -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    
+    <!-- CountUp.js CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/countup.js/2.8.0/countUp.min.js"></script>
+    
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    
+    <!-- Forecast 2025 Specific Styles -->
+    <style>
+        .predictions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-xxl);
+        }
+        
+        .prediction-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+            box-shadow: 0 4px 20px var(--shadow-light);
+            transition: all var(--transition-normal);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .prediction-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px var(--shadow-medium);
+        }
+        
+        .prediction-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+        }
+        
+        .prediction-card__header {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .prediction-card__icon {
+            font-size: 32px;
+        }
+        
+        .prediction-card__title {
+            font-size: var(--font-size-lg);
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        
+        .prediction-card__forecast {
+            text-align: center;
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .forecast-value {
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .forecast-value__number {
+            font-size: var(--font-size-4xl);
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        
+        .forecast-value__unit {
+            font-size: var(--font-size-xl);
+            color: var(--primary-color);
+            margin-left: var(--spacing-xs);
+        }
+        
+        .forecast-value__growth {
+            display: inline-block;
+            background: #22c55e;
+            color: white;
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border-radius: var(--radius-sm);
+            font-size: var(--font-size-sm);
+            font-weight: 600;
+            margin-left: var(--spacing-sm);
+        }
+        
+        .forecast-value__note {
+            font-size: var(--font-size-sm);
+            color: var(--text-secondary);
+        }
+        
+        .prediction-factors {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-sm);
+        }
+        
+        .factor-item {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            padding: var(--spacing-sm);
+            background: var(--background-light);
+            border-radius: var(--radius-sm);
+        }
+        
+        .factor-item__icon {
+            font-size: 16px;
+        }
+        
+        .factor-item__text {
+            font-size: var(--font-size-sm);
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+        
+        .trends-timeline {
+            display: grid;
+            gap: var(--spacing-xxl);
+        }
+        
+        .trend-quarter {
+            position: relative;
+        }
+        
+        .quarter-header {
+            text-align: center;
+            margin-bottom: var(--spacing-xl);
+        }
+        
+        .quarter-label {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            padding: var(--spacing-sm) var(--spacing-lg);
+            border-radius: var(--radius-full);
+            font-size: var(--font-size-sm);
+            font-weight: 600;
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .quarter-title {
+            font-size: var(--font-size-xl);
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        
+        .quarter-trends {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: var(--spacing-lg);
+        }
+        
+        .trend-item {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-lg);
+            box-shadow: 0 2px 15px var(--shadow-light);
+            transition: all var(--transition-normal);
+        }
+        
+        .trend-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 25px var(--shadow-medium);
+        }
+        
+        .trend-item__icon {
+            font-size: 32px;
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .trend-item__title {
+            font-size: var(--font-size-base);
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .trend-item__description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .trend-item__impact {
+            display: flex;
+            gap: var(--spacing-sm);
+        }
+        
+        .impact-level {
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border-radius: var(--radius-sm);
+            font-size: var(--font-size-xs);
+            font-weight: 500;
+        }
+        
+        .impact-level--high {
+            background: #fef2f2;
+            color: #dc2626;
+        }
+        
+        .impact-level--medium {
+            background: #fff7ed;
+            color: #ea580c;
+        }
+        
+        .impact-level--low {
+            background: #f8fafc;
+            color: #64748b;
+        }
+        
+        .adoption-speed {
+            padding: var(--spacing-xs) var(--spacing-sm);
+            background: var(--background-light);
+            color: var(--text-secondary);
+            border-radius: var(--radius-sm);
+            font-size: var(--font-size-xs);
+            font-weight: 500;
+        }
+        
+        .opportunities-matrix {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-xxl);
+        }
+        
+        .opportunity-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+            box-shadow: 0 4px 20px var(--shadow-light);
+            transition: all var(--transition-normal);
+        }
+        
+        .opportunity-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 30px var(--shadow-medium);
+        }
+        
+        .opportunity-card__header {
+            text-align: center;
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .opportunity-card__icon {
+            font-size: 48px;
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .opportunity-card__title {
+            font-size: var(--font-size-lg);
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .opportunity-card__grade {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            padding: var(--spacing-xs) var(--spacing-md);
+            border-radius: var(--radius-full);
+            font-size: var(--font-size-sm);
+            font-weight: 600;
+        }
+        
+        .opportunity-card__metrics {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .opportunity-metric {
+            text-align: center;
+            padding: var(--spacing-md);
+            background: var(--background-light);
+            border-radius: var(--radius-md);
+        }
+        
+        .opportunity-metric__value {
+            display: block;
+            font-size: var(--font-size-lg);
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        .opportunity-metric__label {
+            font-size: var(--font-size-sm);
+            color: var(--text-secondary);
+        }
+        
+        .opportunity-card__items {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .opportunity-card__items li {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            padding: var(--spacing-sm) 0;
+            border-bottom: 1px solid var(--border-light);
+        }
+        
+        .opportunity-card__items li:last-child {
+            border-bottom: none;
+        }
+        
+        .opportunity-card__items li::before {
+            content: "✓";
+            color: #22c55e;
+            font-weight: bold;
+        }
+        
+        .success-roadmap {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+            box-shadow: 0 4px 20px var(--shadow-light);
+        }
+        
+        .roadmap-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-lg);
+        }
+        
+        .roadmap-step {
+            text-align: center;
+            position: relative;
+        }
+        
+        .roadmap-step__number {
+            width: 60px;
+            height: 60px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: var(--font-size-xl);
+            font-weight: 700;
+            margin: 0 auto var(--spacing-md);
+        }
+        
+        .roadmap-step__title {
+            font-size: var(--font-size-base);
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .roadmap-step__description {
+            color: var(--text-secondary);
+            font-size: var(--font-size-sm);
+            line-height: 1.6;
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .roadmap-step__duration {
+            display: inline-block;
+            background: var(--background-light);
+            color: var(--text-secondary);
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border-radius: var(--radius-sm);
+            font-size: var(--font-size-xs);
+            font-weight: 500;
+        }
+        
+        .market-size-chart {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+            box-shadow: 0 4px 20px var(--shadow-light);
+            margin-bottom: var(--spacing-xxl);
+        }
+        
+        .chart-header {
+            text-align: center;
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .chart-title {
+            font-size: var(--font-size-xl);
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .chart-description {
+            color: var(--text-secondary);
+        }
+        
+        @media (max-width: 768px) {
+            .predictions-grid {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-lg);
+            }
+            
+            .quarter-trends {
+                grid-template-columns: 1fr;
+            }
+            
+            .opportunity-card__metrics {
+                grid-template-columns: 1fr;
+            }
+            
+            .roadmap-steps {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip Navigation for Accessibility -->
+    <a href="#main-content" class="skip-navigation">메인 콘텐츠로 바로가기</a>
+    
+    <!-- Navigation Header -->
+    <header class="header" id="header">
+        <nav class="nav" role="navigation" aria-label="메인 네비게이션">
+            <div class="container">
+                <div class="nav__content">
+                    <div class="nav__brand">
+                        <a href="index.html" class="nav__logo" aria-label="홈페이지로 이동">
+                            <svg class="nav__logo-icon" width="32" height="32" viewBox="0 0 32 32" aria-hidden="true">
+                                <path d="M16 3C11.58 3 8 6.58 8 11C8 13.5 9 15.75 10.5 17.5L16 28L21.5 17.5C23 15.75 24 13.5 24 11C24 6.58 20.42 3 16 3ZM16 13C14.9 13 14 12.1 14 11C14 9.9 14.9 9 16 9C17.1 9 18 9.9 18 11C18 12.1 17.1 13 16 13Z" fill="currentColor"/>
+                            </svg>
+                            <span class="nav__logo-text">Tea Trend 2024</span>
+                        </a>
+                    </div>
+                    
+                    <!-- Desktop Navigation -->
+                    <div class="nav__menu" id="nav-menu">
+                        <ul class="nav__list" role="list">
+                            <li class="nav__item">
+                                <a href="index.html" class="nav__link">대시보드</a>
+                            </li>
+                            <li class="nav__item">
+                                <a href="market-overview.html" class="nav__link">시장 개요</a>
+                            </li>
+                            <li class="nav__item">
+                                <a href="rtd-trends.html" class="nav__link">RTD 트렌드</a>
+                            </li>
+                            <li class="nav__item">
+                                <a href="consumer-analysis.html" class="nav__link">소비자 분석</a>
+                            </li>
+                            <li class="nav__item">
+                                <a href="forecast-2025.html" class="nav__link active">2025 전망</a>
+                            </li>
+                            <li class="nav__item">
+                                <a href="expert-insights.html" class="nav__link">전문가 인사이트</a>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <!-- CTA Button -->
+                    <div class="nav__cta">
+                        <a href="#download" class="btn btn--primary btn--small">
+                            <span>보고서 다운로드</span>
+                            <svg class="btn__icon" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
+                                <path d="M8 12l-4-4h2.5V3h3v5H12l-4 4z" fill="currentColor"/>
+                            </svg>
+                        </a>
+                    </div>
+                    
+                    <!-- Mobile Menu Toggle -->
+                    <button class="nav__toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="메뉴 열기/닫기">
+                        <span class="nav__toggle-line"></span>
+                        <span class="nav__toggle-line"></span>
+                        <span class="nav__toggle-line"></span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content Start -->
+    <main id="main-content" role="main">
+        
+        <!-- Section 4: 2025 Forecast -->
+        <section class="section section--forecast" id="forecast">
+            <div class="container">
+                <header class="section__header" data-aos="fade-up">
+                    <span class="section__tag">Section 04</span>
+                    <h2 class="section__title">2025년, 차 음료 시장은 어디로 향할까?</h2>
+                    <p class="section__description">
+                        데이터 분석을 바탕으로 한 2025년 시장 전망과 
+                        새롭게 부상할 비즈니스 기회를 예측합니다.
+                    </p>
+                </header>
+                
+                <div class="forecast__content">
+                    <!-- Market Size Growth Chart -->
+                    <div class="market-size-chart" data-aos="fade-up">
+                        <div class="chart-header">
+                            <h3 class="chart-title">2025년 시장 규모 전망</h3>
+                            <p class="chart-description">
+                                전체 시장 및 주요 세그먼트별 성장 예측
+                            </p>
+                        </div>
+                        <canvas id="section4-forecast-chart" width="800" height="400" aria-label="2025년 차 음료 시장 전망 차트"></canvas>
+                    </div>
+                    
+                    <!-- Market Predictions -->
+                    <div class="market-predictions" data-aos="fade-up">
+                        <h3 class="market-predictions__title">2025 시장 전망</h3>
+                        
+                        <div class="predictions-grid">
+                            <!-- Overall Market Growth -->
+                            <div class="prediction-card prediction-card--growth">
+                                <div class="prediction-card__header">
+                                    <div class="prediction-card__icon">📈</div>
+                                    <h4 class="prediction-card__title">전체 시장 규모</h4>
+                                </div>
+                                
+                                <div class="prediction-card__forecast">
+                                    <div class="forecast-value">
+                                        <span class="forecast-value__number">
+                                            <span class="counter" data-countup="3.2">0</span>
+                                        </span>
+                                        <span class="forecast-value__unit">조원</span>
+                                        <span class="forecast-value__growth">+39.1%</span>
+                                    </div>
+                                    <p class="forecast-value__note">2024년 대비 약 9천억원 증가</p>
+                                </div>
+                                
+                                <div class="prediction-factors">
+                                    <div class="factor-item">
+                                        <span class="factor-item__icon">🌱</span>
+                                        <span class="factor-item__text">건강 의식 확산</span>
+                                    </div>
+                                    <div class="factor-item">
+                                        <span class="factor-item__icon">🚀</span>
+                                        <span class="factor-item__text">혁신 제품 출시</span>
+                                    </div>
+                                    <div class="factor-item">
+                                        <span class="factor-item__icon">🌍</span>
+                                        <span class="factor-item__text">글로벌 트렌드 유입</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- RTD Segment Growth -->
+                            <div class="prediction-card prediction-card--rtd">
+                                <div class="prediction-card__header">
+                                    <div class="prediction-card__icon">🥤</div>
+                                    <h4 class="prediction-card__title">RTD 차 음료</h4>
+                                </div>
+                                
+                                <div class="prediction-card__forecast">
+                                    <div class="forecast-value">
+                                        <span class="forecast-value__number">
+                                            <span class="counter" data-countup="58.3">0</span>
+                                        </span>
+                                        <span class="forecast-value__unit">%</span>
+                                        <span class="forecast-value__growth">+5.5%p</span>
+                                    </div>
+                                    <p class="forecast-value__note">전체 시장 점유율 예상</p>
+                                </div>
+                                
+                                <div class="prediction-factors">
+                                    <div class="factor-item">
+                                        <span class="factor-item__icon">⚡</span>
+                                        <span class="factor-item__text">편의성 니즈 증가</span>
+                                    </div>
+                                    <div class="factor-item">
+                                        <span class="factor-item__icon">🧪</span>
+                                        <span class="factor-item__text">기능성 차별화</span>
+                                    </div>
+                                    <div class="factor-item">
+                                        <span class="factor-item__icon">📱</span>
+                                        <span class="factor-item__text">온라인 채널 확장</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Premium Segment -->
+                            <div class="prediction-card prediction-card--premium">
+                                <div class="prediction-card__header">
+                                    <div class="prediction-card__icon">✨</div>
+                                    <h4 class="prediction-card__title">프리미엄 세그먼트</h4>
+                                </div>
+                                
+                                <div class="prediction-card__forecast">
+                                    <div class="forecast-value">
+                                        <span class="forecast-value__number">
+                                            <span class="counter" data-countup="84.2">0</span>
+                                        </span>
+                                        <span class="forecast-value__unit">%</span>
+                                        <span class="forecast-value__growth">+21.8%</span>
+                                    </div>
+                                    <p class="forecast-value__note">성장률 (vs 일반 제품 23.4%)</p>
+                                </div>
+                                
+                                <div class="prediction-factors">
+                                    <div class="factor-item">
+                                        <span class="factor-item__icon">💎</span>
+                                        <span class="factor-item__text">고급화 지향</span>
+                                    </div>
+                                    <div class="factor-item">
+                                        <span class="factor-item__icon">🌿</span>
+                                        <span class="factor-item__text">오가닉 트렌드</span>
+                                    </div>
+                                    <div class="factor-item">
+                                        <span class="factor-item__icon">🎯</span>
+                                        <span class="factor-item__text">개인 맞춤형</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Functional Tea -->
+                            <div class="prediction-card prediction-card--functional">
+                                <div class="prediction-card__header">
+                                    <div class="prediction-card__icon">💊</div>
+                                    <h4 class="prediction-card__title">기능성 차 음료</h4>
+                                </div>
+                                
+                                <div class="prediction-card__forecast">
+                                    <div class="forecast-value">
+                                        <span class="forecast-value__number">
+                                            <span class="counter" data-countup="156.7">0</span>
+                                        </span>
+                                        <span class="forecast-value__unit">%</span>
+                                        <span class="forecast-value__growth">+89.4%</span>
+                                    </div>
+                                    <p class="forecast-value__note">성장률 (가장 빠른 성장 예상)</p>
+                                </div>
+                                
+                                <div class="prediction-factors">
+                                    <div class="factor-item">
+                                        <span class="factor-item__icon">🏥</span>
+                                        <span class="factor-item__text">헬스케어 융합</span>
+                                    </div>
+                                    <div class="factor-item">
+                                        <span class="factor-item__icon">🔬</span>
+                                        <span class="factor-item__text">과학적 근거</span>
+                                    </div>
+                                    <div class="factor-item">
+                                        <span class="factor-item__icon">🎯</span>
+                                        <span class="factor-item__text">타겟 특화</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Emerging Trends -->
+                    <div class="emerging-trends" data-aos="fade-up" data-aos-delay="200">
+                        <h3 class="emerging-trends__title">2025년 주목할 신흥 트렌드</h3>
+                        
+                        <div class="trends-timeline">
+                            <!-- Q1 Trends -->
+                            <div class="trend-quarter">
+                                <div class="quarter-header">
+                                    <span class="quarter-label">Q1 2025</span>
+                                    <h4 class="quarter-title">개인화 & AI 기술 도입</h4>
+                                </div>
+                                
+                                <div class="quarter-trends">
+                                    <div class="trend-item trend-item--ai">
+                                        <div class="trend-item__icon">🤖</div>
+                                        <div class="trend-item__content">
+                                            <h5 class="trend-item__title">AI 맞춤형 블렌딩</h5>
+                                            <p class="trend-item__description">
+                                                개인의 건강 데이터와 선호도를 분석하여 
+                                                맞춤형 차 블렌드를 추천하는 서비스
+                                            </p>
+                                            <div class="trend-item__impact">
+                                                <span class="impact-level impact-level--high">높은 영향도</span>
+                                                <span class="adoption-speed">빠른 확산</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="trend-item trend-item--personalization">
+                                        <div class="trend-item__icon">🎯</div>
+                                        <div class="trend-item__content">
+                                            <h5 class="trend-item__title">개인 맞춤 구독 서비스</h5>
+                                            <p class="trend-item__description">
+                                                생활패턴, 건강상태, 취향을 고려한 
+                                                월간 차 음료 큐레이션 서비스
+                                            </p>
+                                            <div class="trend-item__impact">
+                                                <span class="impact-level impact-level--high">높은 영향도</span>
+                                                <span class="adoption-speed">중간 확산</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Q2 Trends -->
+                            <div class="trend-quarter">
+                                <div class="quarter-header">
+                                    <span class="quarter-label">Q2 2025</span>
+                                    <h4 class="quarter-title">지속가능성 & 윤리적 소비</h4>
+                                </div>
+                                
+                                <div class="quarter-trends">
+                                    <div class="trend-item trend-item--sustainability">
+                                        <div class="trend-item__icon">♻️</div>
+                                        <div class="trend-item__content">
+                                            <h5 class="trend-item__title">제로웨이스트 패키징</h5>
+                                            <p class="trend-item__description">
+                                                완전 생분해되는 포장재와 리필 가능한 
+                                                용기를 활용한 친환경 제품 라인
+                                            </p>
+                                            <div class="trend-item__impact">
+                                                <span class="impact-level impact-level--medium">중간 영향도</span>
+                                                <span class="adoption-speed">점진적 확산</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="trend-item trend-item--ethical">
+                                        <div class="trend-item__icon">🤝</div>
+                                        <div class="trend-item__content">
+                                            <h5 class="trend-item__title">공정무역 인증 확대</h5>
+                                            <p class="trend-item__description">
+                                                차 원산지 농민과의 직거래 및 
+                                                윤리적 소싱에 대한 투명성 강화
+                                            </p>
+                                            <div class="trend-item__impact">
+                                                <span class="impact-level impact-level--medium">중간 영향도</span>
+                                                <span class="adoption-speed">안정적 확산</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Q3 Trends -->
+                            <div class="trend-quarter">
+                                <div class="quarter-header">
+                                    <span class="quarter-label">Q3 2025</span>
+                                    <h4 class="quarter-title">체험형 마케팅 & 커뮤니티</h4>
+                                </div>
+                                
+                                <div class="quarter-trends">
+                                    <div class="trend-item trend-item--experience">
+                                        <div class="trend-item__icon">🏪</div>
+                                        <div class="trend-item__content">
+                                            <h5 class="trend-item__title">팝업 티 라운지</h5>
+                                            <p class="trend-item__description">
+                                                브랜드 체험과 커뮤니티 형성을 위한 
+                                                임시 매장 및 체험 공간 운영
+                                            </p>
+                                            <div class="trend-item__impact">
+                                                <span class="impact-level impact-level--high">높은 영향도</span>
+                                                <span class="adoption-speed">빠른 확산</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="trend-item trend-item--community">
+                                        <div class="trend-item__icon">👥</div>
+                                        <div class="trend-item__content">
+                                            <h5 class="trend-item__title">차 애호가 커뮤니티</h5>
+                                            <p class="trend-item__description">
+                                                온라인 플랫폼을 통한 사용자 간 
+                                                레시피 공유 및 리뷰 생태계 구축
+                                            </p>
+                                            <div class="trend-item__impact">
+                                                <span class="impact-level impact-level--medium">중간 영향도</span>
+                                                <span class="adoption-speed">점진적 확산</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Q4 Trends -->
+                            <div class="trend-quarter">
+                                <div class="quarter-header">
+                                    <span class="quarter-label">Q4 2025</span>
+                                    <h4 class="quarter-title">기술 융합 & 혁신 제품</h4>
+                                </div>
+                                
+                                <div class="quarter-trends">
+                                    <div class="trend-item trend-item--tech">
+                                        <div class="trend-item__icon">📱</div>
+                                        <div class="trend-item__content">
+                                            <h5 class="trend-item__title">스마트 차 모니터링</h5>
+                                            <p class="trend-item__description">
+                                                IoT 기술을 활용한 차 추출 과정 모니터링 
+                                                및 최적 상태 알림 서비스
+                                            </p>
+                                            <div class="trend-item__impact">
+                                                <span class="impact-level impact-level--low">낮은 영향도</span>
+                                                <span class="adoption-speed">실험적 단계</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="trend-item trend-item--fusion">
+                                        <div class="trend-item__icon">🧬</div>
+                                        <div class="trend-item__content">
+                                            <h5 class="trend-item__title">바이오 기능성 융합</h5>
+                                            <p class="trend-item__description">
+                                                프로바이오틱스, 펩타이드 등 
+                                                바이오 소재와 차의 혁신적 결합
+                                            </p>
+                                            <div class="trend-item__impact">
+                                                <span class="impact-level impact-level--medium">중간 영향도</span>
+                                                <span class="adoption-speed">실험적 단계</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Business Opportunities -->
+                    <div class="business-opportunities" data-aos="fade-up" data-aos-delay="300">
+                        <h3 class="business-opportunities__title">1인 비즈니스 기회 분석</h3>
+                        
+                        <div class="opportunities-matrix">
+                            <!-- High Potential Opportunity -->
+                            <div class="opportunity-card opportunity-card--high">
+                                <div class="opportunity-card__header">
+                                    <div class="opportunity-card__icon">🎯</div>
+                                    <h4 class="opportunity-card__title">즉시 진입 가능</h4>
+                                    <span class="opportunity-card__grade">A급</span>
+                                </div>
+                                
+                                <div class="opportunity-card__metrics">
+                                    <div class="opportunity-metric">
+                                        <span class="opportunity-metric__value">높음</span>
+                                        <span class="opportunity-metric__label">수요</span>
+                                    </div>
+                                    <div class="opportunity-metric">
+                                        <span class="opportunity-metric__value">낮음</span>
+                                        <span class="opportunity-metric__label">경쟁</span>
+                                    </div>
+                                </div>
+                                
+                                <ul class="opportunity-card__items">
+                                    <li>기능성 허브티 (수면, 면역력)</li>
+                                    <li>시니어 맞춤형 블렌드</li>
+                                    <li>지역 특산 차 RTD</li>
+                                    <li>펫 전용 차 음료</li>
+                                </ul>
+                            </div>
+                            
+                            <!-- Medium Potential Opportunity -->
+                            <div class="opportunity-card opportunity-card--medium">
+                                <div class="opportunity-card__header">
+                                    <div class="opportunity-card__icon">⚡</div>
+                                    <h4 class="opportunity-card__title">차별화 필수</h4>
+                                    <span class="opportunity-card__grade">B급</span>
+                                </div>
+                                
+                                <div class="opportunity-card__metrics">
+                                    <div class="opportunity-metric">
+                                        <span class="opportunity-metric__value">높음</span>
+                                        <span class="opportunity-metric__label">수요</span>
+                                    </div>
+                                    <div class="opportunity-metric">
+                                        <span class="opportunity-metric__value">높음</span>
+                                        <span class="opportunity-metric__label">경쟁</span>
+                                    </div>
+                                </div>
+                                
+                                <ul class="opportunity-card__items">
+                                    <li>프리미엄 녹차/홍차 RTD</li>
+                                    <li>콜드브루 차 전문</li>
+                                    <li>유기농 인증 제품</li>
+                                    <li>밀크티 신제품</li>
+                                </ul>
+                            </div>
+                            
+                            <!-- Experimental Opportunity -->
+                            <div class="opportunity-card opportunity-card--experimental">
+                                <div class="opportunity-card__header">
+                                    <div class="opportunity-card__icon">🔬</div>
+                                    <h4 class="opportunity-card__title">시장 개척형</h4>
+                                    <span class="opportunity-card__grade">C급</span>
+                                </div>
+                                
+                                <div class="opportunity-card__metrics">
+                                    <div class="opportunity-metric">
+                                        <span class="opportunity-metric__value">낮음</span>
+                                        <span class="opportunity-metric__label">수요</span>
+                                    </div>
+                                    <div class="opportunity-metric">
+                                        <span class="opportunity-metric__value">낮음</span>
+                                        <span class="opportunity-metric__label">경쟁</span>
+                                    </div>
+                                </div>
+                                
+                                <ul class="opportunity-card__items">
+                                    <li>발효차 RTD (콤부차)</li>
+                                    <li>차+프로바이오틱스</li>
+                                    <li>차+CBD 융합</li>
+                                    <li>스마트 차 키트</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Success Roadmap -->
+                    <div class="success-roadmap" data-aos="fade-up" data-aos-delay="400">
+                        <h3 class="success-roadmap__title">성공 로드맵</h3>
+                        
+                        <div class="roadmap-steps">
+                            <div class="roadmap-step">
+                                <div class="roadmap-step__number">1</div>
+                                <h4 class="roadmap-step__title">시장 진입</h4>
+                                <p class="roadmap-step__description">
+                                    타겟 고객 검증과 MVP 제품을 통한 
+                                    초기 시장 반응 테스트
+                                </p>
+                                <span class="roadmap-step__duration">3-6개월</span>
+                            </div>
+                            
+                            <div class="roadmap-step">
+                                <div class="roadmap-step__number">2</div>
+                                <h4 class="roadmap-step__title">제품 개발</h4>
+                                <p class="roadmap-step__description">
+                                    피드백 기반 제품 완성도 향상과 
+                                    생산 체계 구축
+                                </p>
+                                <span class="roadmap-step__duration">6-12개월</span>
+                            </div>
+                            
+                            <div class="roadmap-step">
+                                <div class="roadmap-step__number">3</div>
+                                <h4 class="roadmap-step__title">마케팅 확장</h4>
+                                <p class="roadmap-step__description">
+                                    브랜딩 강화와 다채널 마케팅을 통한 
+                                    인지도 및 매출 확대
+                                </p>
+                                <span class="roadmap-step__duration">12-18개월</span>
+                            </div>
+                            
+                            <div class="roadmap-step">
+                                <div class="roadmap-step__number">4</div>
+                                <h4 class="roadmap-step__title">성장 확장</h4>
+                                <p class="roadmap-step__description">
+                                    제품 라인 확장과 유통망 다변화를 통한 
+                                    지속 가능한 성장 달성
+                                </p>
+                                <span class="roadmap-step__duration">18개월+</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+    </main>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__content">
+                <div class="footer__main">
+                    <div class="footer__brand">
+                        <h3 class="footer__title">2024 Tea Beverage Trend Report</h3>
+                        <p class="footer__description">
+                            차 음료 시장의 모든 트렌드와 인사이트를 한 곳에서
+                        </p>
+                    </div>
+                    
+                    <div class="footer__links">
+                        <div class="footer__column">
+                            <h4 class="footer__column-title">보고서</h4>
+                            <ul class="footer__list">
+                                <li><a href="index.html" class="footer__link">대시보드</a></li>
+                                <li><a href="market-overview.html" class="footer__link">시장 현황</a></li>
+                                <li><a href="rtd-trends.html" class="footer__link">RTD 트렌드</a></li>
+                                <li><a href="consumer-analysis.html" class="footer__link">소비자 분석</a></li>
+                                <li><a href="forecast-2025.html" class="footer__link">2025 전망</a></li>
+                                <li><a href="expert-insights.html" class="footer__link">전문가 인사이트</a></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="footer__column">
+                            <h4 class="footer__column-title">데이터</h4>
+                            <ul class="footer__list">
+                                <li><a href="#" class="footer__link">시장 규모 데이터</a></li>
+                                <li><a href="#" class="footer__link">소비자 설문조사</a></li>
+                                <li><a href="#" class="footer__link">브랜드 분석</a></li>
+                                <li><a href="#" class="footer__link">트렌드 키워드</a></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="footer__column">
+                            <h4 class="footer__column-title">비즈니스</h4>
+                            <ul class="footer__list">
+                                <li><a href="#" class="footer__link">창업 가이드</a></li>
+                                <li><a href="#" class="footer__link">마케팅 전략</a></li>
+                                <li><a href="#" class="footer__link">성공 사례</a></li>
+                                <li><a href="#" class="footer__link">전문가 상담</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="footer__bottom">
+                    <div class="footer__copyright">
+                        <p>&copy; 2024 Tea Beverage Trend Report. All rights reserved.</p>
+                    </div>
+                    
+                    <div class="footer__meta">
+                        <span class="footer__updated">최종 업데이트: 2024년 12월</span>
+                        <span class="footer__version">v1.0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Libraries -->
+    <script src="assets/js/main.js"></script>
+
+</body>
+</html>
