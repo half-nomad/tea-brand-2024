@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="2024 차 음료 시장 현황 분석 - 시장 규모, 주요 플레이어, 성장 동력 상세 분석">
+    <meta name="keywords" content="차 음료, 시장 현황, 시장 규모, 성장률, 브랜드 분석">
+    <meta name="author" content="AI Content Creation Team">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="차 음료 시장 현황 분석 | Tea Trend 2024">
+    <meta property="og:description" content="2024년 차 음료 시장의 급격한 변화를 데이터로 분석하고, 새로운 기회의 실체를 파악합니다">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="#">
+    <meta property="og:image" content="#">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="차 음료 시장 현황 분석">
+    <meta name="twitter:description" content="2024년 차 음료 시장의 급격한 변화를 데이터로 분석">
+    
+    <title>시장 현황 분석 | Tea Trend 2024</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTE2IDNDMTEuNTggMyA4IDYuNTggOCAxMUM4IDEzLjUgOSAxNS43NSAxMC41IDE3LjVMMTYgMjhMMjEuNSAxNy41QzIzIDE1Ljc1IDI0IDEzLjUgMjQgMTFDMjQgNi41OCAyMC40MiAzIDE2IDNaTTE2IDEzQzE0LjkgMTMgMTQgMTIuMSAxNCAxMUMxNCA5LjkgMTQuOSA5IDE2IDlDMTcuMSA5IDE4IDkuOSAxOCAxMUMxOCAxMi4xIDE3LjEgMTMgMTYgMTNaIiBmaWxsPSIjNDI4ODZCIi8+Cjwvc3ZnPgo=">
+    
+    <!-- External CDN Resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Chart.js CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.min.js"></script>
+    
+    <!-- AOS (Animate On Scroll) CDN -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    
+    <!-- CountUp.js CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/countup.js/2.8.0/countUp.min.js"></script>
+    
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    
+    <!-- Market Overview Specific Styles -->
+    <style>
+        .market-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: var(--spacing-xl);
+            margin-bottom: var(--spacing-xxl);
+        }
+        
+        .market-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+            box-shadow: 0 4px 20px var(--shadow-light);
+            border: 1px solid var(--border-light);
+            transition: all var(--transition-normal);
+        }
+        
+        .market-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px var(--shadow-medium);
+        }
+        
+        .market-card__header {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .market-card__icon svg {
+            width: 48px;
+            height: 48px;
+        }
+        
+        .market-card__title {
+            font-size: var(--font-size-xl);
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+        
+        .market-size {
+            display: flex;
+            align-items: baseline;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .market-size__value {
+            font-size: var(--font-size-4xl);
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        
+        .market-size__unit {
+            font-size: var(--font-size-xl);
+            color: var(--primary-color);
+        }
+        
+        .market-size__year {
+            font-size: var(--font-size-sm);
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+        
+        .market-growth {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .market-growth__text {
+            font-size: var(--font-size-sm);
+            color: var(--text-secondary);
+        }
+        
+        .market-growth__value--positive {
+            color: #22c55e;
+            font-weight: 600;
+        }
+        
+        .player-ranking {
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .player-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: var(--spacing-sm) 0;
+            border-bottom: 1px solid var(--border-light);
+        }
+        
+        .player-item:last-child {
+            border-bottom: none;
+        }
+        
+        .player-item__rank {
+            width: 24px;
+            height: 24px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: var(--font-size-sm);
+            font-weight: 600;
+        }
+        
+        .player-item__name {
+            flex: 1;
+            margin-left: var(--spacing-md);
+            font-weight: 500;
+        }
+        
+        .player-item__share {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        
+        .player-item--others .player-item__rank {
+            background: var(--text-secondary);
+        }
+        
+        .market-card__note {
+            font-size: var(--font-size-sm);
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+        
+        .growth-factors {
+            display: grid;
+            gap: var(--spacing-md);
+        }
+        
+        .growth-factor {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            padding: var(--spacing-md);
+            background: var(--background-light);
+            border-radius: var(--radius-md);
+        }
+        
+        .growth-factor__icon {
+            width: 40px;
+            height: 40px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+        
+        .growth-factor__content h4 {
+            font-size: var(--font-size-base);
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        .growth-factor__content p {
+            font-size: var(--font-size-sm);
+            color: var(--text-secondary);
+        }
+        
+        .regional-chart {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+            box-shadow: 0 4px 20px var(--shadow-light);
+        }
+        
+        .chart-header {
+            text-align: center;
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .chart-title {
+            font-size: var(--font-size-xl);
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .chart-description {
+            color: var(--text-secondary);
+        }
+        
+        @media (max-width: 768px) {
+            .market-grid {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-lg);
+            }
+            
+            .market-size__value {
+                font-size: var(--font-size-3xl);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip Navigation for Accessibility -->
+    <a href="#main-content" class="skip-navigation">메인 콘텐츠로 바로가기</a>
+    
+    <!-- Navigation Header -->
+    <header class="header" id="header">
+        <nav class="nav" role="navigation" aria-label="메인 네비게이션">
+            <div class="container">
+                <div class="nav__content">
+                    <div class="nav__brand">
+                        <a href="index.html" class="nav__logo" aria-label="홈페이지로 이동">
+                            <svg class="nav__logo-icon" width="32" height="32" viewBox="0 0 32 32" aria-hidden="true">
+                                <path d="M16 3C11.58 3 8 6.58 8 11C8 13.5 9 15.75 10.5 17.5L16 28L21.5 17.5C23 15.75 24 13.5 24 11C24 6.58 20.42 3 16 3ZM16 13C14.9 13 14 12.1 14 11C14 9.9 14.9 9 16 9C17.1 9 18 9.9 18 11C18 12.1 17.1 13 16 13Z" fill="currentColor"/>
+                            </svg>
+                            <span class="nav__logo-text">Tea Trend 2024</span>
+                        </a>
+                    </div>
+                    
+                    <!-- Desktop Navigation -->
+                    <div class="nav__menu" id="nav-menu">
+                        <ul class="nav__list" role="list">
+                            <li class="nav__item">
+                                <a href="index.html" class="nav__link">대시보드</a>
+                            </li>
+                            <li class="nav__item">
+                                <a href="market-overview.html" class="nav__link active">시장 개요</a>
+                            </li>
+                            <li class="nav__item">
+                                <a href="rtd-trends.html" class="nav__link">RTD 트렌드</a>
+                            </li>
+                            <li class="nav__item">
+                                <a href="consumer-analysis.html" class="nav__link">소비자 분석</a>
+                            </li>
+                            <li class="nav__item">
+                                <a href="forecast-2025.html" class="nav__link">2025 전망</a>
+                            </li>
+                            <li class="nav__item">
+                                <a href="expert-insights.html" class="nav__link">전문가 인사이트</a>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <!-- CTA Button -->
+                    <div class="nav__cta">
+                        <a href="#download" class="btn btn--primary btn--small">
+                            <span>보고서 다운로드</span>
+                            <svg class="btn__icon" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
+                                <path d="M8 12l-4-4h2.5V3h3v5H12l-4 4z" fill="currentColor"/>
+                            </svg>
+                        </a>
+                    </div>
+                    
+                    <!-- Mobile Menu Toggle -->
+                    <button class="nav__toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="메뉴 열기/닫기">
+                        <span class="nav__toggle-line"></span>
+                        <span class="nav__toggle-line"></span>
+                        <span class="nav__toggle-line"></span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content Start -->
+    <main id="main-content" role="main">
+        
+        <!-- Section 1: Market Overview -->
+        <section class="section section--market" id="market">
+            <div class="container">
+                <header class="section__header" data-aos="fade-up">
+                    <span class="section__tag">Section 01</span>
+                    <h2 class="section__title">차 음료 시장, 지금 무슨 일이 일어나고 있나?</h2>
+                    <p class="section__description">
+                        2024년 차 음료 시장의 급격한 변화를 데이터로 분석하고,
+                        새로운 기회의 실체를 파악합니다.
+                    </p>
+                </header>
+                
+                <div class="market-grid">
+                    <!-- Market Size Card -->
+                    <div class="market-card market-card--size" data-aos="fade-up" data-aos-delay="100">
+                        <div class="market-card__header">
+                            <div class="market-card__icon">
+                                <svg width="48" height="48" viewBox="0 0 48 48" aria-hidden="true">
+                                    <circle cx="24" cy="24" r="20" fill="var(--primary-color)" opacity="0.1"/>
+                                    <path d="M24 8c8.84 0 16 7.16 16 16s-7.16 16-16 16S8 32.84 8 24 15.16 8 24 8zm0 4c-6.63 0-12 5.37-12 12s5.37 12 12 12 12-5.37 12-12-5.37-12-12-12z" fill="var(--primary-color)"/>
+                                </svg>
+                            </div>
+                            <h3 class="market-card__title">시장 규모</h3>
+                        </div>
+                        <div class="market-card__content">
+                            <div class="market-size">
+                                <span class="market-size__value">
+                                    <span class="counter" data-countup="2.3">0</span>
+                                    <span class="market-size__unit">조원</span>
+                                </span>
+                                <span class="market-size__year">2024</span>
+                            </div>
+                            <div class="market-growth">
+                                <span class="market-growth__text">전년 대비</span>
+                                <span class="market-growth__value market-growth__value--positive">+12.7%</span>
+                            </div>
+                            <p class="market-card__description">
+                                건강 트렌드와 편의성 증대로<br>
+                                지속적인 성장 동력 확보
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Key Players Card -->
+                    <div class="market-card market-card--players" data-aos="fade-up" data-aos-delay="200">
+                        <div class="market-card__header">
+                            <div class="market-card__icon">
+                                <svg width="48" height="48" viewBox="0 0 48 48" aria-hidden="true">
+                                    <rect x="8" y="16" width="32" height="24" rx="2" fill="var(--primary-color)" opacity="0.1"/>
+                                    <path d="M12 20h6v4h-6zm8 0h6v4h-6zm8 0h6v4h-6zM12 26h6v4h-6zm8 0h6v4h-6zm8 0h6v4h-6z" fill="var(--primary-color)"/>
+                                </svg>
+                            </div>
+                            <h3 class="market-card__title">주요 플레이어</h3>
+                        </div>
+                        <div class="market-card__content">
+                            <div class="player-ranking">
+                                <div class="player-item">
+                                    <span class="player-item__rank">1</span>
+                                    <span class="player-item__name">동원F&B</span>
+                                    <span class="player-item__share">23.4%</span>
+                                </div>
+                                <div class="player-item">
+                                    <span class="player-item__rank">2</span>
+                                    <span class="player-item__name">코카콜라</span>
+                                    <span class="player-item__share">18.7%</span>
+                                </div>
+                                <div class="player-item">
+                                    <span class="player-item__rank">3</span>
+                                    <span class="player-item__name">아모레퍼시픽</span>
+                                    <span class="player-item__share">12.9%</span>
+                                </div>
+                                <div class="player-item player-item--others">
+                                    <span class="player-item__name">기타 브랜드</span>
+                                    <span class="player-item__share">45.0%</span>
+                                </div>
+                            </div>
+                            <p class="market-card__note">
+                                *기타 브랜드 45%는 1인 비즈니스와 
+                                신규 브랜드의 기회 공간
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Growth Drivers Card -->
+                    <div class="market-card market-card--drivers" data-aos="fade-up" data-aos-delay="300">
+                        <div class="market-card__header">
+                            <div class="market-card__icon">
+                                <svg width="48" height="48" viewBox="0 0 48 48" aria-hidden="true">
+                                    <path d="M24 4l4 8h8l-6 6 2 8-8-4-8 4 2-8-6-6h8l4-8z" fill="var(--primary-color)" opacity="0.1"/>
+                                    <path d="M24 8l3 6h6l-4.5 4.5L30 25l-6-3-6 3 1.5-6.5L15 14h6l3-6z" fill="var(--primary-color)"/>
+                                </svg>
+                            </div>
+                            <h3 class="market-card__title">성장 동력</h3>
+                        </div>
+                        <div class="market-card__content">
+                            <div class="growth-factors">
+                                <div class="growth-factor">
+                                    <div class="growth-factor__icon">🏥</div>
+                                    <div class="growth-factor__content">
+                                        <h4>건강 의식 확산</h4>
+                                        <p>웰빙 트렌드로 기능성 차 선호도 급증</p>
+                                    </div>
+                                </div>
+                                <div class="growth-factor">
+                                    <div class="growth-factor__icon">⚡</div>
+                                    <div class="growth-factor__content">
+                                        <h4>편의성 증대</h4>
+                                        <p>RTD 제품의 접근성과 휴대성 향상</p>
+                                    </div>
+                                </div>
+                                <div class="growth-factor">
+                                    <div class="growth-factor__icon">🌍</div>
+                                    <div class="growth-factor__content">
+                                        <h4>글로벌 트렌드</h4>
+                                        <p>K-뷰티 확산으로 한국 차 문화 관심 증가</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Regional Growth Chart -->
+                <div class="regional-chart" data-aos="fade-up" data-aos-delay="400">
+                    <div class="chart-header">
+                        <h3 class="chart-title">지역별 성장률 분석</h3>
+                        <p class="chart-description">
+                            전국 주요 권역별 차 음료 시장 성장률 비교 (2024년 기준)
+                        </p>
+                    </div>
+                    <canvas id="section1-regional-chart" width="800" height="400" aria-label="지역별 차 음료 시장 성장률 차트"></canvas>
+                </div>
+            </div>
+        </section>
+        
+    </main>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__content">
+                <div class="footer__main">
+                    <div class="footer__brand">
+                        <h3 class="footer__title">2024 Tea Beverage Trend Report</h3>
+                        <p class="footer__description">
+                            차 음료 시장의 모든 트렌드와 인사이트를 한 곳에서
+                        </p>
+                    </div>
+                    
+                    <div class="footer__links">
+                        <div class="footer__column">
+                            <h4 class="footer__column-title">보고서</h4>
+                            <ul class="footer__list">
+                                <li><a href="index.html" class="footer__link">대시보드</a></li>
+                                <li><a href="market-overview.html" class="footer__link">시장 현황</a></li>
+                                <li><a href="rtd-trends.html" class="footer__link">RTD 트렌드</a></li>
+                                <li><a href="consumer-analysis.html" class="footer__link">소비자 분석</a></li>
+                                <li><a href="forecast-2025.html" class="footer__link">2025 전망</a></li>
+                                <li><a href="expert-insights.html" class="footer__link">전문가 인사이트</a></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="footer__column">
+                            <h4 class="footer__column-title">데이터</h4>
+                            <ul class="footer__list">
+                                <li><a href="#" class="footer__link">시장 규모 데이터</a></li>
+                                <li><a href="#" class="footer__link">소비자 설문조사</a></li>
+                                <li><a href="#" class="footer__link">브랜드 분석</a></li>
+                                <li><a href="#" class="footer__link">트렌드 키워드</a></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="footer__column">
+                            <h4 class="footer__column-title">비즈니스</h4>
+                            <ul class="footer__list">
+                                <li><a href="#" class="footer__link">창업 가이드</a></li>
+                                <li><a href="#" class="footer__link">마케팅 전략</a></li>
+                                <li><a href="#" class="footer__link">성공 사례</a></li>
+                                <li><a href="#" class="footer__link">전문가 상담</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="footer__bottom">
+                    <div class="footer__copyright">
+                        <p>&copy; 2024 Tea Beverage Trend Report. All rights reserved.</p>
+                    </div>
+                    
+                    <div class="footer__meta">
+                        <span class="footer__updated">최종 업데이트: 2024년 12월</span>
+                        <span class="footer__version">v1.0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Libraries -->
+    <script src="assets/js/main.js"></script>
+
+</body>
+</html>

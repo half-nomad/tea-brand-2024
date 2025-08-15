@@ -72,37 +72,74 @@ function initializeAOS() {
 
 // ===== COUNTER ANIMATIONS =====
 function initializeCounters() {
-    const counters = document.querySelectorAll('[data-countup]');
-    
-    if (typeof CountUp !== 'undefined' && counters.length > 0) {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const target = entry.target;
-                    const finalValue = parseInt(target.dataset.countup);
-                    
-                    const countUp = new CountUp(target, finalValue, {
-                        duration: 2.5,
-                        useEasing: true,
-                        useGrouping: true,
-                        separator: ','
-                    });
-                    
-                    if (!countUp.error) {
-                        countUp.start();
-                    }
-                    
-                    observer.unobserve(target);
-                }
-            });
-        }, {
-            threshold: 0.5
+    // 라이브러리 로드 대기
+    setTimeout(() => {
+        const counters = document.querySelectorAll('[data-countup]');
+        
+        console.log('Checking CountUp v1.9.3:', {
+            'window.CountUp': typeof window.CountUp,
+            'counters found': counters.length
         });
         
-        counters.forEach(counter => {
-            observer.observe(counter);
-        });
-    }
+        if (typeof window.CountUp !== 'undefined' && counters.length > 0) {
+            console.log('CountUp library found! Initializing counters...');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const target = entry.target;
+                        const finalValue = parseFloat(target.dataset.countup);
+                        
+                        console.log('Animating:', target.className, 'to value:', finalValue);
+                        
+                        try {
+                            // CountUp v1.9.3 API: new CountUp(target, startVal, endVal, decimals, duration, options)
+                            const originalText = target.textContent;
+                            const suffix = originalText.replace(/[\d.]/g, ''); // Extract non-numeric parts like "+"
+                            const decimals = finalValue % 1 !== 0 ? 1 : 0;
+                            const countUp = new CountUp(target, 0, finalValue, decimals, 2.5);
+                            
+                            if (!countUp.error) {
+                                countUp.start(() => {
+                                    // Add suffix back after animation
+                                    if (suffix) {
+                                        target.textContent = finalValue + suffix;
+                                    }
+                                    console.log('Animation completed for:', finalValue + suffix);
+                                });
+                            } else {
+                                console.error('CountUp error:', countUp.error);
+                                target.textContent = finalValue + suffix;
+                            }
+                        } catch (error) {
+                            console.error('CountUp creation failed:', error);
+                            const originalText = target.textContent;
+                            const suffix = originalText.replace(/[\d.]/g, '');
+                            target.textContent = finalValue + suffix;
+                        }
+                        
+                        observer.unobserve(target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            counters.forEach(counter => {
+                observer.observe(counter);
+            });
+            
+        } else {
+            console.error('CountUp NOT found!');
+            
+            // 폴백: 직접 값 설정
+            counters.forEach(counter => {
+                const value = parseFloat(counter.dataset.countup);
+                const originalText = counter.textContent;
+                const suffix = originalText.replace(/[\d.]/g, '');
+                counter.textContent = value + suffix;
+                console.log('Fallback set:', value + suffix);
+            });
+        }
+    }, 200); // 조금 더 기다리기
 }
 
 // ===== CHART INITIALIZATION =====
