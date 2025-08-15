@@ -1,0 +1,1417 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="차 음료 소비자 행동 분석 - 연령별 소비 패턴, 구매 결정 요인, 라이프스타일 세그먼트 분석">
+    <meta name="keywords" content="소비자 분석, 차 음료, 구매 패턴, 타겟 고객, 마케팅 인사이트">
+    <meta name="author" content="AI Content Creation Team">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="차 음료 소비자 행동 분석 | Tea Trend 2024">
+    <meta property="og:description" content="소비자 행동 패턴을 심층 분석하여 타겟 고객층의 진짜 니즈와 구매 동기를 파악합니다">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="#">
+    <meta property="og:image" content="#">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="차 음료 소비자 행동 분석">
+    <meta name="twitter:description" content="타겟 고객층의 진짜 니즈와 구매 동기 분석">
+    
+    <title>소비자 분석 | Tea Trend 2024</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTE2IDNDMTEuNTggMyA4IDYuNTggOCAxMUM4IDEzLjUgOSAxNS43NSAxMC41IDE3LjVMMTYgMjhMMjEuNSAxNy41QzIzIDE1Ljc1IDI0IDEzLjUgMjQgMTFDMjQgNi41OCAyMC40MiAzIDE2IDNaTTE2IDEzQzE0LjkgMTMgMTQgMTIuMSAxNCAxMUMxNCA5LjkgMTQuOSA5IDE2IDlDMTcuMSA5IDE4IDkuOSAxOCAxMUMxOCAxMi4xIDE3LjEgMTMgMTYgMTNaIiBmaWxsPSIjNDI4ODZCIi8+Cjwvc3ZnPgo=">
+    
+    <!-- External CDN Resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Chart.js CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.min.js"></script>
+    
+    <!-- AOS (Animate On Scroll) CDN -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    
+    <!-- CountUp.js CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/countup.js/2.8.0/countUp.min.js"></script>
+    
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    
+    <!-- Consumer Analysis Specific Styles -->
+    <style>
+        .demographics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: var(--spacing-xl);
+            margin-bottom: var(--spacing-xxl);
+        }
+        
+        .demo-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+            box-shadow: 0 4px 20px var(--shadow-light);
+            transition: all var(--transition-normal);
+        }
+        
+        .demo-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 30px var(--shadow-medium);
+        }
+        
+        .demo-card__header {
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .demo-card__title {
+            font-size: var(--font-size-lg);
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        .demo-card__subtitle {
+            font-size: var(--font-size-sm);
+            color: var(--text-secondary);
+        }
+        
+        .demo-card__insights {
+            margin-top: var(--spacing-lg);
+        }
+        
+        .age-insight {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--spacing-sm) 0;
+            border-bottom: 1px solid var(--border-light);
+        }
+        
+        .age-insight:last-child {
+            border-bottom: none;
+        }
+        
+        .age-insight__range {
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+        
+        .age-insight__percentage {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        
+        .age-insight__trend {
+            font-size: var(--font-size-sm);
+            font-weight: 500;
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border-radius: var(--radius-sm);
+        }
+        
+        .trend-up {
+            background: #f0fdf4;
+            color: #16a34a;
+        }
+        
+        .trend-stable {
+            background: #f8fafc;
+            color: #64748b;
+        }
+        
+        .trend-down {
+            background: #fef2f2;
+            color: #dc2626;
+        }
+        
+        .profile-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-lg);
+        }
+        
+        .profile-stat {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            padding: var(--spacing-md);
+            background: var(--background-light);
+            border-radius: var(--radius-md);
+        }
+        
+        .profile-stat__icon {
+            font-size: 32px;
+        }
+        
+        .profile-stat__content {
+            flex: 1;
+        }
+        
+        .profile-stat__label {
+            display: block;
+            font-size: var(--font-size-sm);
+            color: var(--text-secondary);
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        .profile-stat__value {
+            font-size: var(--font-size-xl);
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        
+        .profile-stat__note {
+            font-size: var(--font-size-xs);
+            color: var(--text-secondary);
+            margin-top: var(--spacing-xs);
+        }
+        
+        .lifestyle-segments {
+            display: grid;
+            gap: var(--spacing-lg);
+        }
+        
+        .segment-item {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            padding: var(--spacing-lg);
+            background: var(--background-light);
+            border-radius: var(--radius-md);
+            transition: all var(--transition-fast);
+        }
+        
+        .segment-item:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+        
+        .segment-item__icon {
+            font-size: 32px;
+        }
+        
+        .segment-item__content {
+            flex: 1;
+        }
+        
+        .segment-item__title {
+            font-size: var(--font-size-base);
+            font-weight: 600;
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        .segment-item__percentage {
+            font-size: var(--font-size-lg);
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-left: var(--spacing-md);
+        }
+        
+        .segment-item:hover .segment-item__percentage {
+            color: white;
+        }
+        
+        .segment-item__description {
+            font-size: var(--font-size-sm);
+            color: var(--text-secondary);
+            margin-top: var(--spacing-xs);
+            line-height: 1.4;
+        }
+        
+        .segment-item:hover .segment-item__description {
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .behavior-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: var(--spacing-xl);
+            margin-bottom: var(--spacing-xxl);
+        }
+        
+        .behavior-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+            box-shadow: 0 4px 20px var(--shadow-light);
+        }
+        
+        .behavior-card__header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .behavior-card__title {
+            font-size: var(--font-size-lg);
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        
+        .behavior-card__subtitle {
+            font-size: var(--font-size-sm);
+            color: var(--text-secondary);
+        }
+        
+        .frequency-selector {
+            display: flex;
+            gap: var(--spacing-xs);
+        }
+        
+        .frequency-btn {
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border: 1px solid var(--border-light);
+            background: white;
+            color: var(--text-secondary);
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            font-size: var(--font-size-sm);
+        }
+        
+        .frequency-btn--active,
+        .frequency-btn:hover {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+        
+        .frequency-stats {
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .freq-stat {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .freq-stat__label {
+            min-width: 80px;
+            font-size: var(--font-size-sm);
+            color: var(--text-secondary);
+        }
+        
+        .freq-stat__bar {
+            flex: 1;
+            height: 8px;
+            background: var(--background-light);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .freq-stat__fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            transition: width var(--transition-normal);
+        }
+        
+        .freq-stat__value {
+            min-width: 40px;
+            text-align: right;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        
+        .behavior-insight {
+            padding: var(--spacing-md);
+            background: var(--background-light);
+            border-radius: var(--radius-md);
+            text-align: center;
+        }
+        
+        .behavior-insight__text {
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+        
+        .channel-item {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            padding: var(--spacing-md) 0;
+            border-bottom: 1px solid var(--border-light);
+        }
+        
+        .channel-item:last-child {
+            border-bottom: none;
+        }
+        
+        .channel-item__header {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            min-width: 100px;
+        }
+        
+        .channel-item__icon {
+            font-size: 20px;
+        }
+        
+        .channel-item__name {
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+        
+        .channel-item__stats {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-xs);
+        }
+        
+        .channel-stat {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+        
+        .channel-stat__year {
+            min-width: 40px;
+            font-size: var(--font-size-xs);
+            color: var(--text-secondary);
+        }
+        
+        .channel-stat__bar {
+            flex: 1;
+            height: 6px;
+            background: var(--background-light);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        
+        .channel-stat__fill--current {
+            background: var(--primary-color);
+        }
+        
+        .channel-stat__fill--previous {
+            background: var(--text-secondary);
+        }
+        
+        .channel-stat__value {
+            min-width: 35px;
+            text-align: right;
+            font-size: var(--font-size-sm);
+            font-weight: 500;
+        }
+        
+        .channel-item__change {
+            min-width: 40px;
+            text-align: center;
+            font-weight: 600;
+            font-size: var(--font-size-sm);
+        }
+        
+        .channel-item__change--up {
+            color: #16a34a;
+        }
+        
+        .channel-item__change--down {
+            color: #dc2626;
+        }
+        
+        .motivations-container {
+            display: grid;
+            gap: var(--spacing-xxl);
+        }
+        
+        .motivation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--spacing-lg);
+        }
+        
+        .motivation-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-lg);
+            box-shadow: 0 2px 15px var(--shadow-light);
+            text-align: center;
+            transition: all var(--transition-normal);
+        }
+        
+        .motivation-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 25px var(--shadow-medium);
+        }
+        
+        .motivation-card__icon {
+            font-size: 48px;
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .motivation-card__title {
+            font-size: var(--font-size-lg);
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .motivation-card__percentage {
+            display: block;
+            font-size: var(--font-size-2xl);
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .motivation-card__description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .motivation-card__tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-xs);
+            justify-content: center;
+        }
+        
+        .motivation-tag {
+            padding: var(--spacing-xs) var(--spacing-sm);
+            background: var(--primary-color);
+            color: white;
+            border-radius: var(--radius-sm);
+            font-size: var(--font-size-xs);
+            font-weight: 500;
+        }
+        
+        .factors-ranking {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-lg);
+        }
+        
+        .factor-item {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            padding: var(--spacing-lg);
+            background: white;
+            border-radius: var(--radius-lg);
+            box-shadow: 0 2px 15px var(--shadow-light);
+        }
+        
+        .factor-item__rank {
+            width: 40px;
+            height: 40px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: var(--font-size-lg);
+            font-weight: 700;
+        }
+        
+        .factor-item__content {
+            flex: 1;
+        }
+        
+        .factor-item__title {
+            font-size: var(--font-size-base);
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .factor-item__bar {
+            width: 100%;
+            height: 8px;
+            background: var(--background-light);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        .factor-item__fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+        }
+        
+        .factor-item__score {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        
+        .factor-item__description {
+            color: var(--text-secondary);
+            font-size: var(--font-size-sm);
+            margin-top: var(--spacing-sm);
+        }
+        
+        .journey-flow {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-xl);
+            overflow-x: auto;
+            padding: var(--spacing-lg) 0;
+        }
+        
+        .journey-step {
+            min-width: 280px;
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-lg);
+            box-shadow: 0 2px 15px var(--shadow-light);
+            position: relative;
+        }
+        
+        .journey-step__number {
+            position: absolute;
+            top: -15px;
+            left: var(--spacing-lg);
+            width: 30px;
+            height: 30px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: var(--font-size-sm);
+        }
+        
+        .journey-step__title {
+            font-size: var(--font-size-base);
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: var(--spacing-sm);
+            margin-top: var(--spacing-sm);
+        }
+        
+        .journey-step__description {
+            color: var(--text-secondary);
+            font-size: var(--font-size-sm);
+            line-height: 1.6;
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .journey-step__channels {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-xs);
+        }
+        
+        .channel-badge {
+            padding: var(--spacing-xs) var(--spacing-sm);
+            background: var(--background-light);
+            border-radius: var(--radius-sm);
+            font-size: var(--font-size-xs);
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+        
+        .journey-step__icon {
+            font-size: 24px;
+            text-align: center;
+            margin-top: var(--spacing-sm);
+        }
+        
+        .journey-arrow {
+            font-size: 24px;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+        
+        .journey-insights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-xl);
+        }
+        
+        .journey-insight {
+            text-align: center;
+            padding: var(--spacing-lg);
+            background: white;
+            border-radius: var(--radius-md);
+            box-shadow: 0 2px 10px var(--shadow-light);
+        }
+        
+        .journey-insight__title {
+            font-size: var(--font-size-sm);
+            font-weight: 500;
+            color: var(--text-secondary);
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        .journey-insight__value {
+            display: block;
+            font-size: var(--font-size-xl);
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        .journey-insight__note {
+            font-size: var(--font-size-xs);
+            color: var(--text-secondary);
+        }
+        
+        @media (max-width: 768px) {
+            .demographics-grid,
+            .behavior-grid {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-lg);
+            }
+            
+            .profile-stats {
+                grid-template-columns: 1fr;
+            }
+            
+            .journey-flow {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .journey-arrow {
+                transform: rotate(90deg);
+                align-self: center;
+            }
+            
+            .journey-step {
+                min-width: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip Navigation for Accessibility -->
+    <a href="#main-content" class="skip-navigation">메인 콘텐츠로 바로가기</a>
+    
+    <!-- Navigation Header -->
+    <header class="header" id="header">
+        <nav class="nav" role="navigation" aria-label="메인 네비게이션">
+            <div class="container">
+                <div class="nav__content">
+                    <div class="nav__brand">
+                        <a href="index.html" class="nav__logo" aria-label="홈페이지로 이동">
+                            <svg class="nav__logo-icon" width="32" height="32" viewBox="0 0 32 32" aria-hidden="true">
+                                <path d="M16 3C11.58 3 8 6.58 8 11C8 13.5 9 15.75 10.5 17.5L16 28L21.5 17.5C23 15.75 24 13.5 24 11C24 6.58 20.42 3 16 3ZM16 13C14.9 13 14 12.1 14 11C14 9.9 14.9 9 16 9C17.1 9 18 9.9 18 11C18 12.1 17.1 13 16 13Z" fill="currentColor"/>
+                            </svg>
+                            <span class="nav__logo-text">Tea Trend 2024</span>
+                        </a>
+                    </div>
+                    
+                    <!-- Desktop Navigation -->
+                    <div class="nav__menu" id="nav-menu">
+                        <ul class="nav__list" role="list">
+                            <li class="nav__item">
+                                <a href="index.html" class="nav__link">대시보드</a>
+                            </li>
+                            <li class="nav__item">
+                                <a href="market-overview.html" class="nav__link">시장 개요</a>
+                            </li>
+                            <li class="nav__item">
+                                <a href="rtd-trends.html" class="nav__link">RTD 트렌드</a>
+                            </li>
+                            <li class="nav__item">
+                                <a href="consumer-analysis.html" class="nav__link active">소비자 분석</a>
+                            </li>
+                            <li class="nav__item">
+                                <a href="forecast-2025.html" class="nav__link">2025 전망</a>
+                            </li>
+                            <li class="nav__item">
+                                <a href="expert-insights.html" class="nav__link">전문가 인사이트</a>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <!-- CTA Button -->
+                    <div class="nav__cta">
+                        <a href="#download" class="btn btn--primary btn--small">
+                            <span>보고서 다운로드</span>
+                            <svg class="btn__icon" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
+                                <path d="M8 12l-4-4h2.5V3h3v5H12l-4 4z" fill="currentColor"/>
+                            </svg>
+                        </a>
+                    </div>
+                    
+                    <!-- Mobile Menu Toggle -->
+                    <button class="nav__toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="메뉴 열기/닫기">
+                        <span class="nav__toggle-line"></span>
+                        <span class="nav__toggle-line"></span>
+                        <span class="nav__toggle-line"></span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content Start -->
+    <main id="main-content" role="main">
+        
+        <!-- Section 3: Consumer Analysis -->
+        <section class="section section--consumer" id="consumer">
+            <div class="container">
+                <header class="section__header" data-aos="fade-up">
+                    <span class="section__tag">Section 03</span>
+                    <h2 class="section__title">누가, 왜 차 음료를 선택하는가?</h2>
+                    <p class="section__description">
+                        소비자 행동 패턴을 심층 분석하여 타겟 고객층의 
+                        진짜 니즈와 구매 동기를 파악합니다.
+                    </p>
+                </header>
+                
+                <div class="consumer__content">
+                    <!-- Demographics Overview -->
+                    <div class="demographics-overview" data-aos="fade-up">
+                        <h3 class="demographics-overview__title">차 음료 소비자 프로필</h3>
+                        
+                        <div class="demographics-grid">
+                            <!-- Age Distribution -->
+                            <div class="demo-card demo-card--age">
+                                <div class="demo-card__header">
+                                    <h4 class="demo-card__title">연령대별 분포</h4>
+                                    <span class="demo-card__subtitle">2024년 기준</span>
+                                </div>
+                                
+                                <div class="demo-card__chart">
+                                    <canvas id="section3-age-chart" width="300" height="200" aria-label="연령대별 차 음료 소비 분포 차트"></canvas>
+                                </div>
+                                
+                                <div class="demo-card__insights">
+                                    <div class="age-insight">
+                                        <span class="age-insight__range">20-30대</span>
+                                        <span class="age-insight__percentage">42%</span>
+                                        <span class="age-insight__trend trend-up">+8%</span>
+                                    </div>
+                                    <div class="age-insight">
+                                        <span class="age-insight__range">30-40대</span>
+                                        <span class="age-insight__percentage">31%</span>
+                                        <span class="age-insight__trend trend-stable">+2%</span>
+                                    </div>
+                                    <div class="age-insight">
+                                        <span class="age-insight__range">40-50대</span>
+                                        <span class="age-insight__percentage">18%</span>
+                                        <span class="age-insight__trend trend-up">+5%</span>
+                                    </div>
+                                    <div class="age-insight">
+                                        <span class="age-insight__range">50대 이상</span>
+                                        <span class="age-insight__percentage">9%</span>
+                                        <span class="age-insight__trend trend-down">-3%</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Gender & Income -->
+                            <div class="demo-card demo-card--profile">
+                                <div class="demo-card__header">
+                                    <h4 class="demo-card__title">성별 & 소득 분포</h4>
+                                    <span class="demo-card__subtitle">주요 타겟층 특성</span>
+                                </div>
+                                
+                                <div class="profile-stats">
+                                    <div class="profile-stat">
+                                        <div class="profile-stat__icon">👩</div>
+                                        <div class="profile-stat__content">
+                                            <span class="profile-stat__label">여성 소비자</span>
+                                            <span class="profile-stat__value">63%</span>
+                                            <p class="profile-stat__note">건강 및 미용 관심 높음</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="profile-stat">
+                                        <div class="profile-stat__icon">👨</div>
+                                        <div class="profile-stat__content">
+                                            <span class="profile-stat__label">남성 소비자</span>
+                                            <span class="profile-stat__value">37%</span>
+                                            <p class="profile-stat__note">편의성과 기능성 중시</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="profile-stat">
+                                        <div class="profile-stat__icon">💰</div>
+                                        <div class="profile-stat__content">
+                                            <span class="profile-stat__label">평균 월소득</span>
+                                            <span class="profile-stat__value">450만원</span>
+                                            <p class="profile-stat__note">중산층 이상 집중</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="profile-stat">
+                                        <div class="profile-stat__icon">🎓</div>
+                                        <div class="profile-stat__content">
+                                            <span class="profile-stat__label">대졸 이상</span>
+                                            <span class="profile-stat__value">78%</span>
+                                            <p class="profile-stat__note">높은 교육 수준</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Lifestyle Segments -->
+                            <div class="demo-card demo-card--lifestyle">
+                                <div class="demo-card__header">
+                                    <h4 class="demo-card__title">라이프스타일 세그먼트</h4>
+                                    <span class="demo-card__subtitle">주요 소비자 유형</span>
+                                </div>
+                                
+                                <div class="lifestyle-segments">
+                                    <div class="segment-item segment-item--health">
+                                        <div class="segment-item__icon">🌱</div>
+                                        <div class="segment-item__content">
+                                            <h5 class="segment-item__title">건강 추구형</h5>
+                                            <p class="segment-item__description">
+                                                유기농, 무첨가, 기능성 성분을 
+                                                적극적으로 찾는 소비자
+                                            </p>
+                                        </div>
+                                        <span class="segment-item__percentage">34%</span>
+                                    </div>
+                                    
+                                    <div class="segment-item segment-item--convenience">
+                                        <div class="segment-item__icon">⚡</div>
+                                        <div class="segment-item__content">
+                                            <h5 class="segment-item__title">편의성 중시형</h5>
+                                            <p class="segment-item__description">
+                                                바쁜 일상 속에서 간편하게 
+                                                섭취할 수 있는 제품 선호
+                                            </p>
+                                        </div>
+                                        <span class="segment-item__percentage">28%</span>
+                                    </div>
+                                    
+                                    <div class="segment-item segment-item--premium">
+                                        <div class="segment-item__icon">✨</div>
+                                        <div class="segment-item__content">
+                                            <h5 class="segment-item__title">프리미엄 지향형</h5>
+                                            <p class="segment-item__description">
+                                                브랜드 가치와 품질을 중시하며 
+                                                가격 민감도가 낮은 소비자
+                                            </p>
+                                        </div>
+                                        <span class="segment-item__percentage">23%</span>
+                                    </div>
+                                    
+                                    <div class="segment-item segment-item--experimental">
+                                        <div class="segment-item__icon">🚀</div>
+                                        <div class="segment-item__content">
+                                            <h5 class="segment-item__title">트렌드 얼리어답터</h5>
+                                            <p class="segment-item__description">
+                                                새로운 제품과 브랜드를 
+                                                적극적으로 시도하는 소비자
+                                            </p>
+                                        </div>
+                                        <span class="segment-item__percentage">15%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Purchase Behavior Analysis -->
+                    <div class="purchase-behavior" data-aos="fade-up" data-aos-delay="200">
+                        <h3 class="purchase-behavior__title">구매 행동 패턴 분석</h3>
+                        
+                        <div class="behavior-grid">
+                            <!-- Purchase Frequency -->
+                            <div class="behavior-card behavior-card--frequency">
+                                <div class="behavior-card__header">
+                                    <h4 class="behavior-card__title">구매 빈도</h4>
+                                    <div class="frequency-selector">
+                                        <button class="frequency-btn frequency-btn--active" data-freq="weekly">주간</button>
+                                        <button class="frequency-btn" data-freq="monthly">월간</button>
+                                        <button class="frequency-btn" data-freq="yearly">연간</button>
+                                    </div>
+                                </div>
+                                
+                                <div class="frequency-stats">
+                                    <div class="freq-stat">
+                                        <span class="freq-stat__label">주 3회 이상</span>
+                                        <div class="freq-stat__bar">
+                                            <div class="freq-stat__fill" style="width: 45%"></div>
+                                        </div>
+                                        <span class="freq-stat__value">45%</span>
+                                    </div>
+                                    
+                                    <div class="freq-stat">
+                                        <span class="freq-stat__label">주 1-2회</span>
+                                        <div class="freq-stat__bar">
+                                            <div class="freq-stat__fill" style="width: 32%"></div>
+                                        </div>
+                                        <span class="freq-stat__value">32%</span>
+                                    </div>
+                                    
+                                    <div class="freq-stat">
+                                        <span class="freq-stat__label">월 1-3회</span>
+                                        <div class="freq-stat__bar">
+                                            <div class="freq-stat__fill" style="width: 16%"></div>
+                                        </div>
+                                        <span class="freq-stat__value">16%</span>
+                                    </div>
+                                    
+                                    <div class="freq-stat">
+                                        <span class="freq-stat__label">가끔</span>
+                                        <div class="freq-stat__bar">
+                                            <div class="freq-stat__fill" style="width: 7%"></div>
+                                        </div>
+                                        <span class="freq-stat__value">7%</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="behavior-insight">
+                                    <p class="behavior-insight__text">
+                                        <strong>77%</strong>의 소비자가 주 1회 이상 
+                                        정기적으로 차 음료를 구매
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <!-- Purchase Channels -->
+                            <div class="behavior-card behavior-card--channels">
+                                <div class="behavior-card__header">
+                                    <h4 class="behavior-card__title">구매 채널 선호도</h4>
+                                    <span class="behavior-card__subtitle">2024년 vs 2023년</span>
+                                </div>
+                                
+                                <div class="channels-comparison">
+                                    <div class="channel-item">
+                                        <div class="channel-item__header">
+                                            <span class="channel-item__icon">🏪</span>
+                                            <span class="channel-item__name">편의점</span>
+                                        </div>
+                                        <div class="channel-item__stats">
+                                            <div class="channel-stat">
+                                                <span class="channel-stat__year">2024</span>
+                                                <div class="channel-stat__bar">
+                                                    <div class="channel-stat__fill channel-stat__fill--current" style="width: 38%"></div>
+                                                </div>
+                                                <span class="channel-stat__value">38%</span>
+                                            </div>
+                                            <div class="channel-stat">
+                                                <span class="channel-stat__year">2023</span>
+                                                <div class="channel-stat__bar">
+                                                    <div class="channel-stat__fill channel-stat__fill--previous" style="width: 42%"></div>
+                                                </div>
+                                                <span class="channel-stat__value">42%</span>
+                                            </div>
+                                        </div>
+                                        <span class="channel-item__change channel-item__change--down">-4%</span>
+                                    </div>
+                                    
+                                    <div class="channel-item">
+                                        <div class="channel-item__header">
+                                            <span class="channel-item__icon">🛒</span>
+                                            <span class="channel-item__name">온라인몰</span>
+                                        </div>
+                                        <div class="channel-item__stats">
+                                            <div class="channel-stat">
+                                                <span class="channel-stat__year">2024</span>
+                                                <div class="channel-stat__bar">
+                                                    <div class="channel-stat__fill channel-stat__fill--current" style="width: 32%"></div>
+                                                </div>
+                                                <span class="channel-stat__value">32%</span>
+                                            </div>
+                                            <div class="channel-stat">
+                                                <span class="channel-stat__year">2023</span>
+                                                <div class="channel-stat__bar">
+                                                    <div class="channel-stat__fill channel-stat__fill--previous" style="width: 23%"></div>
+                                                </div>
+                                                <span class="channel-stat__value">23%</span>
+                                            </div>
+                                        </div>
+                                        <span class="channel-item__change channel-item__change--up">+9%</span>
+                                    </div>
+                                    
+                                    <div class="channel-item">
+                                        <div class="channel-item__header">
+                                            <span class="channel-item__icon">🏬</span>
+                                            <span class="channel-item__name">대형마트</span>
+                                        </div>
+                                        <div class="channel-item__stats">
+                                            <div class="channel-stat">
+                                                <span class="channel-stat__year">2024</span>
+                                                <div class="channel-stat__bar">
+                                                    <div class="channel-stat__fill channel-stat__fill--current" style="width: 18%"></div>
+                                                </div>
+                                                <span class="channel-stat__value">18%</span>
+                                            </div>
+                                            <div class="channel-stat">
+                                                <span class="channel-stat__year">2023</span>
+                                                <div class="channel-stat__bar">
+                                                    <div class="channel-stat__fill channel-stat__fill--previous" style="width: 21%"></div>
+                                                </div>
+                                                <span class="channel-stat__value">21%</span>
+                                            </div>
+                                        </div>
+                                        <span class="channel-item__change channel-item__change--down">-3%</span>
+                                    </div>
+                                    
+                                    <div class="channel-item">
+                                        <div class="channel-item__header">
+                                            <span class="channel-item__icon">☕</span>
+                                            <span class="channel-item__name">카페/전문점</span>
+                                        </div>
+                                        <div class="channel-item__stats">
+                                            <div class="channel-stat">
+                                                <span class="channel-stat__year">2024</span>
+                                                <div class="channel-stat__bar">
+                                                    <div class="channel-stat__fill channel-stat__fill--current" style="width: 12%"></div>
+                                                </div>
+                                                <span class="channel-stat__value">12%</span>
+                                            </div>
+                                            <div class="channel-stat">
+                                                <span class="channel-stat__year">2023</span>
+                                                <div class="channel-stat__bar">
+                                                    <div class="channel-stat__fill channel-stat__fill--previous" style="width: 14%"></div>
+                                                </div>
+                                                <span class="channel-stat__value">14%</span>
+                                            </div>
+                                        </div>
+                                        <span class="channel-item__change channel-item__change--down">-2%</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="behavior-insight">
+                                    <p class="behavior-insight__text">
+                                        온라인 구매가 <strong>+9%</strong> 증가하며 
+                                        디지털 전환 가속화
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Purchase Motivations -->
+                    <div class="purchase-motivations" data-aos="fade-up" data-aos-delay="300">
+                        <h3 class="purchase-motivations__title">구매 동기 & 선호 요인</h3>
+                        
+                        <div class="motivations-container">
+                            <!-- Primary Motivations -->
+                            <div class="motivation-section">
+                                <h4 class="motivation-section__title">주요 구매 동기</h4>
+                                
+                                <div class="motivation-grid">
+                                    <div class="motivation-card motivation-card--health">
+                                        <div class="motivation-card__icon">💪</div>
+                                        <div class="motivation-card__content">
+                                            <h5 class="motivation-card__title">건강 개선</h5>
+                                            <span class="motivation-card__percentage">47%</span>
+                                            <p class="motivation-card__description">
+                                                항산화, 면역력 증진, 다이어트 등 
+                                                건강상 이점 추구
+                                            </p>
+                                            <div class="motivation-card__tags">
+                                                <span class="motivation-tag">항산화</span>
+                                                <span class="motivation-tag">면역력</span>
+                                                <span class="motivation-tag">다이어트</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="motivation-card motivation-card--taste">
+                                        <div class="motivation-card__icon">😋</div>
+                                        <div class="motivation-card__content">
+                                            <h5 class="motivation-card__title">맛과 향</h5>
+                                            <span class="motivation-card__percentage">32%</span>
+                                            <p class="motivation-card__description">
+                                                다양한 플레이버와 향미를 통한 
+                                                감각적 만족 추구
+                                            </p>
+                                            <div class="motivation-card__tags">
+                                                <span class="motivation-tag">프리미엄 맛</span>
+                                                <span class="motivation-tag">향 즐김</span>
+                                                <span class="motivation-tag">새로운 맛</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="motivation-card motivation-card--convenience">
+                                        <div class="motivation-card__icon">⚡</div>
+                                        <div class="motivation-card__content">
+                                            <h5 class="motivation-card__title">편의성</h5>
+                                            <span class="motivation-card__percentage">28%</span>
+                                            <p class="motivation-card__description">
+                                                간편한 섭취와 휴대성으로 
+                                                바쁜 일상에 적합
+                                            </p>
+                                            <div class="motivation-card__tags">
+                                                <span class="motivation-tag">간편함</span>
+                                                <span class="motivation-tag">휴대성</span>
+                                                <span class="motivation-tag">시간 절약</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="motivation-card motivation-card--lifestyle">
+                                        <div class="motivation-card__icon">✨</div>
+                                        <div class="motivation-card__content">
+                                            <h5 class="motivation-card__title">라이프스타일</h5>
+                                            <span class="motivation-card__percentage">21%</span>
+                                            <p class="motivation-card__description">
+                                                개인의 가치관과 이미지 표현 
+                                                수단으로 활용
+                                            </p>
+                                            <div class="motivation-card__tags">
+                                                <span class="motivation-tag">트렌디함</span>
+                                                <span class="motivation-tag">자기표현</span>
+                                                <span class="motivation-tag">스타일</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Selection Factors -->
+                            <div class="selection-factors">
+                                <h4 class="selection-factors__title">제품 선택 시 중요 요인</h4>
+                                
+                                <div class="factors-ranking">
+                                    <div class="factor-item factor-item--1">
+                                        <div class="factor-item__rank">1</div>
+                                        <div class="factor-item__content">
+                                            <h5 class="factor-item__title">성분 및 원료</h5>
+                                            <div class="factor-item__bar">
+                                                <div class="factor-item__fill" style="width: 89%"></div>
+                                            </div>
+                                            <span class="factor-item__score">89점</span>
+                                        </div>
+                                        <p class="factor-item__description">
+                                            천연 원료, 무첨가, 유기농 여부를 가장 중시
+                                        </p>
+                                    </div>
+                                    
+                                    <div class="factor-item factor-item--2">
+                                        <div class="factor-item__rank">2</div>
+                                        <div class="factor-item__content">
+                                            <h5 class="factor-item__title">맛과 향</h5>
+                                            <div class="factor-item__bar">
+                                                <div class="factor-item__fill" style="width: 82%"></div>
+                                            </div>
+                                            <span class="factor-item__score">82점</span>
+                                        </div>
+                                        <p class="factor-item__description">
+                                            개인 취향에 맞는 맛과 향의 조화
+                                        </p>
+                                    </div>
+                                    
+                                    <div class="factor-item factor-item--3">
+                                        <div class="factor-item__rank">3</div>
+                                        <div class="factor-item__content">
+                                            <h5 class="factor-item__title">브랜드 신뢰도</h5>
+                                            <div class="factor-item__bar">
+                                                <div class="factor-item__fill" style="width: 76%"></div>
+                                            </div>
+                                            <span class="factor-item__score">76점</span>
+                                        </div>
+                                        <p class="factor-item__description">
+                                            브랜드 명성과 품질에 대한 신뢰
+                                        </p>
+                                    </div>
+                                    
+                                    <div class="factor-item factor-item--4">
+                                        <div class="factor-item__rank">4</div>
+                                        <div class="factor-item__content">
+                                            <h5 class="factor-item__title">가격 대비 가치</h5>
+                                            <div class="factor-item__bar">
+                                                <div class="factor-item__fill" style="width: 68%"></div>
+                                            </div>
+                                            <span class="factor-item__score">68점</span>
+                                        </div>
+                                        <p class="factor-item__description">
+                                            적절한 가격 수준과 품질의 균형
+                                        </p>
+                                    </div>
+                                    
+                                    <div class="factor-item factor-item--5">
+                                        <div class="factor-item__rank">5</div>
+                                        <div class="factor-item__content">
+                                            <h5 class="factor-item__title">패키징 & 디자인</h5>
+                                            <div class="factor-item__bar">
+                                                <div class="factor-item__fill" style="width: 54%"></div>
+                                            </div>
+                                            <span class="factor-item__score">54점</span>
+                                        </div>
+                                        <p class="factor-item__description">
+                                            시각적 매력도와 보관 편의성
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Consumer Journey -->
+                    <div class="consumer-journey" data-aos="fade-up" data-aos-delay="400">
+                        <h3 class="consumer-journey__title">차 음료 소비자 여정</h3>
+                        
+                        <div class="journey-flow">
+                            <div class="journey-step journey-step--awareness">
+                                <div class="journey-step__number">01</div>
+                                <div class="journey-step__content">
+                                    <h4 class="journey-step__title">인지 단계</h4>
+                                    <p class="journey-step__description">
+                                        SNS, 온라인 리뷰, 지인 추천을 통한 
+                                        제품 발견 및 관심 형성
+                                    </p>
+                                    <div class="journey-step__channels">
+                                        <span class="channel-badge">Instagram 32%</span>
+                                        <span class="channel-badge">YouTube 28%</span>
+                                        <span class="channel-badge">지인추천 24%</span>
+                                    </div>
+                                </div>
+                                <div class="journey-step__icon">👁️</div>
+                            </div>
+                            
+                            <div class="journey-arrow">→</div>
+                            
+                            <div class="journey-step journey-step--consideration">
+                                <div class="journey-step__number">02</div>
+                                <div class="journey-step__content">
+                                    <h4 class="journey-step__title">고려 단계</h4>
+                                    <p class="journey-step__description">
+                                        상품 정보 검색, 리뷰 확인, 
+                                        성분 분석을 통한 비교 검토
+                                    </p>
+                                    <div class="journey-step__channels">
+                                        <span class="channel-badge">온라인리뷰 45%</span>
+                                        <span class="channel-badge">브랜드사이트 31%</span>
+                                        <span class="channel-badge">가격비교 38%</span>
+                                    </div>
+                                </div>
+                                <div class="journey-step__icon">🤔</div>
+                            </div>
+                            
+                            <div class="journey-arrow">→</div>
+                            
+                            <div class="journey-step journey-step--trial">
+                                <div class="journey-step__number">03</div>
+                                <div class="journey-step__content">
+                                    <h4 class="journey-step__title">시도 단계</h4>
+                                    <p class="journey-step__description">
+                                        소량 구매 또는 샘플 체험을 통한 
+                                        실제 제품 테스트 진행
+                                    </p>
+                                    <div class="journey-step__channels">
+                                        <span class="channel-badge">편의점 48%</span>
+                                        <span class="channel-badge">온라인샘플 29%</span>
+                                        <span class="channel-badge">팝업스토어 18%</span>
+                                    </div>
+                                </div>
+                                <div class="journey-step__icon">🛍️</div>
+                            </div>
+                            
+                            <div class="journey-arrow">→</div>
+                            
+                            <div class="journey-step journey-step--loyalty">
+                                <div class="journey-step__number">04</div>
+                                <div class="journey-step__content">
+                                    <h4 class="journey-step__title">충성 단계</h4>
+                                    <p class="journey-step__description">
+                                        만족 시 정기 구매 및 주변 추천, 
+                                        브랜드 커뮤니티 참여로 발전
+                                    </p>
+                                    <div class="journey-step__channels">
+                                        <span class="channel-badge">정기구매 56%</span>
+                                        <span class="channel-badge">추천활동 42%</span>
+                                        <span class="channel-badge">리뷰작성 38%</span>
+                                    </div>
+                                </div>
+                                <div class="journey-step__icon">❤️</div>
+                            </div>
+                        </div>
+                        
+                        <div class="journey-insights">
+                            <div class="journey-insight">
+                                <h5 class="journey-insight__title">평균 의사결정 기간</h5>
+                                <span class="journey-insight__value">3-7일</span>
+                                <p class="journey-insight__note">신중한 검토 과정을 거치는 특징</p>
+                            </div>
+                            
+                            <div class="journey-insight">
+                                <h5 class="journey-insight__title">리뷰 영향도</h5>
+                                <span class="journey-insight__value">87%</span>
+                                <p class="journey-insight__note">타인의 경험을 매우 중시</p>
+                            </div>
+                            
+                            <div class="journey-insight">
+                                <h5 class="journey-insight__title">재구매율</h5>
+                                <span class="journey-insight__value">73%</span>
+                                <p class="journey-insight__note">만족 시 높은 재구매 의향</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+    </main>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__content">
+                <div class="footer__main">
+                    <div class="footer__brand">
+                        <h3 class="footer__title">2024 Tea Beverage Trend Report</h3>
+                        <p class="footer__description">
+                            차 음료 시장의 모든 트렌드와 인사이트를 한 곳에서
+                        </p>
+                    </div>
+                    
+                    <div class="footer__links">
+                        <div class="footer__column">
+                            <h4 class="footer__column-title">보고서</h4>
+                            <ul class="footer__list">
+                                <li><a href="index.html" class="footer__link">대시보드</a></li>
+                                <li><a href="market-overview.html" class="footer__link">시장 현황</a></li>
+                                <li><a href="rtd-trends.html" class="footer__link">RTD 트렌드</a></li>
+                                <li><a href="consumer-analysis.html" class="footer__link">소비자 분석</a></li>
+                                <li><a href="forecast-2025.html" class="footer__link">2025 전망</a></li>
+                                <li><a href="expert-insights.html" class="footer__link">전문가 인사이트</a></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="footer__column">
+                            <h4 class="footer__column-title">데이터</h4>
+                            <ul class="footer__list">
+                                <li><a href="#" class="footer__link">시장 규모 데이터</a></li>
+                                <li><a href="#" class="footer__link">소비자 설문조사</a></li>
+                                <li><a href="#" class="footer__link">브랜드 분석</a></li>
+                                <li><a href="#" class="footer__link">트렌드 키워드</a></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="footer__column">
+                            <h4 class="footer__column-title">비즈니스</h4>
+                            <ul class="footer__list">
+                                <li><a href="#" class="footer__link">창업 가이드</a></li>
+                                <li><a href="#" class="footer__link">마케팅 전략</a></li>
+                                <li><a href="#" class="footer__link">성공 사례</a></li>
+                                <li><a href="#" class="footer__link">전문가 상담</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="footer__bottom">
+                    <div class="footer__copyright">
+                        <p>&copy; 2024 Tea Beverage Trend Report. All rights reserved.</p>
+                    </div>
+                    
+                    <div class="footer__meta">
+                        <span class="footer__updated">최종 업데이트: 2024년 12월</span>
+                        <span class="footer__version">v1.0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Libraries -->
+    <script src="assets/js/main.js"></script>
+
+</body>
+</html>
