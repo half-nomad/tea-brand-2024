@@ -1,22 +1,14 @@
-<!-- 
-    2024 Tea Beverage Trend Report - Integrated Full Website
-    통합된 차 음료 트렌드 보고서 웹사이트
-    
-    작업 단계: Phase B-1 통합 파일 생성
-    파일 크기: 예상 ~200KB
-    포함 내용: HTML 마크업, CSS 스타일, JavaScript 기능
--->
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="2024 차 음료 소비 트렌드 혁명 - 1인 비즈니스를 위한 시장 분석 보고서">
+    <meta name="description" content="2024 차 음료 소비 트렌드 혁명 - 1인 비즈니스를 위한 시장 분석 보고서 대시보드">
     <meta name="keywords" content="차 음료, RTD, 트렌드, 시장분석, 1인 비즈니스, 마케팅 인사이트">
     <meta name="author" content="AI Content Creation Team">
     
     <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="2024 차 음료 소비 트렌드 혁명">
+    <meta property="og:title" content="2024 차 음료 소비 트렌드 혁명 - 대시보드">
     <meta property="og:description" content="데이터로 보는 차 음료 시장의 변화와 1인 비즈니스 기회">
     <meta property="og:type" content="article">
     <meta property="og:url" content="#">
@@ -27,7 +19,7 @@
     <meta name="twitter:title" content="2024 차 음료 소비 트렌드 혁명">
     <meta name="twitter:description" content="데이터로 보는 차 음료 시장의 변화와 1인 비즈니스 기회">
     
-    <title>2024 차 음료 소비 트렌드 혁명 | AI Content Creation Team</title>
+    <title>대시보드 | Tea Trend 2024</title>
     
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTE2IDNDMTEuNTggMyA4IDYuNTggOCAxMUM4IDEzLjUgOSAxNS43NSAxMC41IDE3LjVMMTYgMjhMMjEuNSAxNy41QzIzIDE1Ljc1IDI0IDEzLjUgMjQgMTFDMjQgNi41OCAyMC40MiAzIDE2IDNaTTE2IDEzQzE0LjkgMTMgMTQgMTIuMSAxNCAxMUMxNCA5LjkgMTQuOSA5IDE2IDlDMTcuMSA5IDE4IDkuOSAxOCAxMUMxOCAxMi4xIDE3LjEgMTMgMTYgMTNaIiBmaWxsPSIjNDI4ODZCIi8+Cjwvc3ZnPgo=">
@@ -47,52 +39,150 @@
     <!-- CountUp.js CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/countup.js/2.8.0/countUp.min.js"></script>
     
-    <!-- Inline Critical CSS -->
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    
+    <!-- Dashboard Specific Styles -->
     <style>
-        :root {
-            --primary-color: #42886B;
-            --secondary-color: #7FB069;
-            --accent-color: #B8D4C7;
-            --text-primary: #1A1A1A;
-            --text-secondary: #666666;
-            --text-light: #999999;
-            --background-light: #FAFCFB;
-            --background-white: #FFFFFF;
-            --border-light: #E5E5E5;
-            --shadow-light: rgba(66, 136, 107, 0.1);
-            --shadow-medium: rgba(66, 136, 107, 0.15);
-            --gradient-primary: linear-gradient(135deg, #42886B 0%, #7FB069 100%);
-            --gradient-secondary: linear-gradient(135deg, #B8D4C7 0%, #7FB069 100%);
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: var(--spacing-xl);
+            margin-bottom: var(--spacing-xxl);
         }
         
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        .insight-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+            box-shadow: 0 4px 20px var(--shadow-light);
+            border: 1px solid var(--border-light);
+            transition: all var(--transition-normal);
+            position: relative;
+            overflow: hidden;
         }
         
-        html {
-            scroll-behavior: smooth;
-            font-size: 16px;
+        .insight-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px var(--shadow-medium);
         }
         
-        body {
-            font-family: 'Noto Sans KR', 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-            line-height: 1.6;
+        .insight-card__header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .insight-card__icon {
+            width: 60px;
+            height: 60px;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+        
+        .insight-card__icon--market { background: linear-gradient(135deg, #42886B, #7FB069); }
+        .insight-card__icon--rtd { background: linear-gradient(135deg, #7FB069, #B8D4C7); }
+        .insight-card__icon--consumer { background: linear-gradient(135deg, #B8D4C7, #42886B); }
+        .insight-card__icon--forecast { background: linear-gradient(135deg, #42886B, #B8D4C7); }
+        .insight-card__icon--expert { background: linear-gradient(135deg, #7FB069, #42886B); }
+        
+        .insight-card__title {
+            font-size: var(--font-size-xl);
+            font-weight: 700;
             color: var(--text-primary);
-            background-color: var(--background-white);
-            overflow-x: hidden;
+            margin-bottom: var(--spacing-sm);
         }
         
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
+        .insight-card__description {
+            color: var(--text-secondary);
+            margin-bottom: var(--spacing-lg);
+            line-height: 1.6;
+        }
+        
+        .insight-card__stats {
+            display: flex;
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-item__number {
+            display: block;
+            font-size: var(--font-size-2xl);
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        
+        .stat-item__label {
+            font-size: var(--font-size-sm);
+            color: var(--text-secondary);
+        }
+        
+        .insight-card__link {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: var(--font-size-sm);
+            transition: color var(--transition-fast);
+        }
+        
+        .insight-card__link:hover {
+            color: var(--secondary-color);
+        }
+        
+        .quick-insights {
+            background: var(--background-light);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+            margin-bottom: var(--spacing-xxl);
+        }
+        
+        .quick-insights__grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-lg);
+        }
+        
+        .quick-stat {
+            text-align: center;
+            padding: var(--spacing-lg);
+            background: white;
+            border-radius: var(--radius-md);
+            box-shadow: 0 2px 10px var(--shadow-light);
+        }
+        
+        .quick-stat__number {
+            display: block;
+            font-size: var(--font-size-3xl);
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        .quick-stat__label {
+            font-size: var(--font-size-sm);
+            color: var(--text-secondary);
+            font-weight: 500;
         }
         
         @media (max-width: 768px) {
-            .container {
-                padding: 0 16px;
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-lg);
+            }
+            
+            .quick-insights__grid {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
     </style>
@@ -107,7 +197,7 @@
             <div class="container">
                 <div class="nav__content">
                     <div class="nav__brand">
-                        <a href="#" class="nav__logo" aria-label="홈페이지로 이동">
+                        <a href="index.html" class="nav__logo" aria-label="홈페이지로 이동">
                             <svg class="nav__logo-icon" width="32" height="32" viewBox="0 0 32 32" aria-hidden="true">
                                 <path d="M16 3C11.58 3 8 6.58 8 11C8 13.5 9 15.75 10.5 17.5L16 28L21.5 17.5C23 15.75 24 13.5 24 11C24 6.58 20.42 3 16 3ZM16 13C14.9 13 14 12.1 14 11C14 9.9 14.9 9 16 9C17.1 9 18 9.9 18 11C18 12.1 17.1 13 16 13Z" fill="currentColor"/>
                             </svg>
@@ -119,19 +209,22 @@
                     <div class="nav__menu" id="nav-menu">
                         <ul class="nav__list" role="list">
                             <li class="nav__item">
-                                <a href="#market" class="nav__link">시장 개요</a>
+                                <a href="index.html" class="nav__link active">대시보드</a>
                             </li>
                             <li class="nav__item">
-                                <a href="#rtd" class="nav__link">RTD 트렌드</a>
+                                <a href="market-overview.html" class="nav__link">시장 개요</a>
                             </li>
                             <li class="nav__item">
-                                <a href="#consumer" class="nav__link">소비자 분석</a>
+                                <a href="rtd-trends.html" class="nav__link">RTD 트렌드</a>
                             </li>
                             <li class="nav__item">
-                                <a href="#forecast" class="nav__link">2025 전망</a>
+                                <a href="consumer-analysis.html" class="nav__link">소비자 분석</a>
                             </li>
                             <li class="nav__item">
-                                <a href="#insights" class="nav__link">전문가 인사이트</a>
+                                <a href="forecast-2025.html" class="nav__link">2025 전망</a>
+                            </li>
+                            <li class="nav__item">
+                                <a href="expert-insights.html" class="nav__link">전문가 인사이트</a>
                             </li>
                         </ul>
                     </div>
@@ -166,14 +259,14 @@
         <div class="container">
             <div class="hero__content">
                 <div class="hero__text" data-aos="fade-up">
-                    <span class="hero__label">2024 Market Research</span>
+                    <span class="hero__label">2024 Market Research Dashboard</span>
                     <h1 class="hero__title">
-                        <span class="hero__title-line">차 음료 소비</span>
-                        <span class="hero__title-line hero__title-line--accent">트렌드 혁명</span>
+                        <span class="hero__title-line">차 음료 시장</span>
+                        <span class="hero__title-line hero__title-line--accent">트렌드 대시보드</span>
                     </h1>
                     <p class="hero__description">
-                        데이터로 읽는 시장 변화의 신호와<br>
-                        1인 비즈니스를 위한 실질적인 기회 분석
+                        5개 주요 섹션으로 구성된 차 음료 시장 분석을 통해<br>
+                        데이터 기반의 비즈니스 인사이트를 확인하세요
                     </p>
                     
                     <div class="hero__stats" data-aos="fade-up" data-aos-delay="200">
@@ -184,21 +277,21 @@
                         </div>
                         <div class="hero__stat-divider"></div>
                         <div class="hero__stat">
-                            <span class="hero__stat-number" data-countup="34">0</span>
-                            <span class="hero__stat-unit">%</span>
-                            <span class="hero__stat-label">MZ세대 점유율</span>
+                            <span class="hero__stat-number" data-countup="3.2">0</span>
+                            <span class="hero__stat-unit">조원</span>
+                            <span class="hero__stat-label">2025 시장전망</span>
                         </div>
                         <div class="hero__stat-divider"></div>
                         <div class="hero__stat">
-                            <span class="hero__stat-number" data-countup="89">0</span>
+                            <span class="hero__stat-number" data-countup="156">0</span>
                             <span class="hero__stat-unit">%</span>
-                            <span class="hero__stat-label">건강 우선 고려</span>
+                            <span class="hero__stat-label">기능성차 성장</span>
                         </div>
                     </div>
                     
                     <div class="hero__actions" data-aos="fade-up" data-aos-delay="300">
-                        <a href="#market" class="btn btn--primary btn--large">
-                            <span>인사이트 탐색하기</span>
+                        <a href="market-overview.html" class="btn btn--primary btn--large">
+                            <span>시장 분석 시작하기</span>
                             <svg class="btn__icon" width="20" height="20" viewBox="0 0 20 20" aria-hidden="true">
                                 <path d="M10 2l8 8-8 8V13H2v-2h8V2z" fill="currentColor"/>
                             </svg>
@@ -216,26 +309,7 @@
                     <div class="hero__chart-container">
                         <canvas id="hero-trend-chart" width="500" height="300" aria-label="차 음료 시장 성장 트렌드 차트"></canvas>
                     </div>
-                    
-                    <div class="hero__insights">
-                        <div class="insight-bubble insight-bubble--top" data-aos="fade-in" data-aos-delay="400">
-                            <span class="insight-bubble__text">프리미엄 차 47% 성장</span>
-                        </div>
-                        <div class="insight-bubble insight-bubble--bottom" data-aos="fade-in" data-aos-delay="500">
-                            <span class="insight-bubble__text">건강기능성 급부상</span>
-                        </div>
-                    </div>
                 </div>
-            </div>
-            
-            <!-- Scroll Indicator -->
-            <div class="hero__scroll" data-aos="fade-up" data-aos-delay="600">
-                <button class="scroll-indicator" onclick="document.querySelector('#market').scrollIntoView({behavior: 'smooth'})" aria-label="아래로 스크롤">
-                    <span class="scroll-indicator__text">Scroll to explore</span>
-                    <svg class="scroll-indicator__icon" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
-                        <path d="M12 16l-6-6h12l-6 6z" fill="currentColor"/>
-                    </svg>
-                </button>
             </div>
         </div>
     </section>
@@ -243,1124 +317,259 @@
     <!-- Main Content Start -->
     <main id="main-content" role="main">
         
-        <!-- Section 1: Market Overview -->
-        <section class="section section--market" id="market">
+        <!-- Quick Insights -->
+        <section class="section">
             <div class="container">
-                <header class="section__header" data-aos="fade-up">
-                    <span class="section__tag">Section 01</span>
-                    <h2 class="section__title">차 음료 시장, 지금 무슨 일이 일어나고 있나?</h2>
-                    <p class="section__description">
-                        2024년 차 음료 시장의 급격한 변화를 데이터로 분석하고,
-                        새로운 기회의 실체를 파악합니다.
-                    </p>
-                </header>
-                
-                <div class="market-grid">
-                    <!-- Market Size Card -->
-                    <div class="market-card market-card--size" data-aos="fade-up" data-aos-delay="100">
-                        <div class="market-card__header">
-                            <div class="market-card__icon">
-                                <svg width="48" height="48" viewBox="0 0 48 48" aria-hidden="true">
-                                    <circle cx="24" cy="24" r="20" fill="var(--primary-color)" opacity="0.1"/>
-                                    <path d="M24 8c8.84 0 16 7.16 16 16s-7.16 16-16 16S8 32.84 8 24 15.16 8 24 8zm0 4c-6.63 0-12 5.37-12 12s5.37 12 12 12 12-5.37 12-12-5.37-12-12-12z" fill="var(--primary-color)"/>
-                                </svg>
-                            </div>
-                            <h3 class="market-card__title">시장 규모</h3>
-                        </div>
-                        <div class="market-card__content">
-                            <div class="market-size">
-                                <span class="market-size__value">
-                                    <span class="counter" data-countup="2.3">0</span>
-                                    <span class="market-size__unit">조원</span>
-                                </span>
-                                <span class="market-size__year">2024</span>
-                            </div>
-                            <div class="market-growth">
-                                <span class="market-growth__text">전년 대비</span>
-                                <span class="market-growth__value market-growth__value--positive">+12.7%</span>
-                            </div>
-                            <p class="market-card__description">
-                                건강 트렌드와 편의성 증대로<br>
-                                지속적인 성장 동력 확보
-                            </p>
-                        </div>
+                <div class="quick-insights" data-aos="fade-up">
+                    <div class="section__header">
+                        <h2 class="section__title">핵심 시장 지표</h2>
+                        <p class="section__description">
+                            차 음료 시장의 주요 성과 지표를 한눈에 확인하세요
+                        </p>
                     </div>
-
-                    <!-- Key Players Card -->
-                    <div class="market-card market-card--players" data-aos="fade-up" data-aos-delay="200">
-                        <div class="market-card__header">
-                            <div class="market-card__icon">
-                                <svg width="48" height="48" viewBox="0 0 48 48" aria-hidden="true">
-                                    <rect x="8" y="16" width="32" height="24" rx="2" fill="var(--primary-color)" opacity="0.1"/>
-                                    <path d="M12 20h6v4h-6zm8 0h6v4h-6zm8 0h6v4h-6zM12 26h6v4h-6zm8 0h6v4h-6zm8 0h6v4h-6z" fill="var(--primary-color)"/>
-                                </svg>
-                            </div>
-                            <h3 class="market-card__title">주요 플레이어</h3>
+                    
+                    <div class="quick-insights__grid">
+                        <div class="quick-stat" data-aos="fade-up" data-aos-delay="100">
+                            <span class="quick-stat__number" data-countup="4159">0</span>
+                            <span class="quick-stat__label">억원 시장규모</span>
                         </div>
-                        <div class="market-card__content">
-                            <div class="player-ranking">
-                                <div class="player-item">
-                                    <span class="player-item__rank">1</span>
-                                    <span class="player-item__name">동원F&B</span>
-                                    <span class="player-item__share">23.4%</span>
-                                </div>
-                                <div class="player-item">
-                                    <span class="player-item__rank">2</span>
-                                    <span class="player-item__name">코카콜라</span>
-                                    <span class="player-item__share">18.7%</span>
-                                </div>
-                                <div class="player-item">
-                                    <span class="player-item__rank">3</span>
-                                    <span class="player-item__name">아모레퍼시픽</span>
-                                    <span class="player-item__share">12.9%</span>
-                                </div>
-                                <div class="player-item player-item--others">
-                                    <span class="player-item__name">기타 브랜드</span>
-                                    <span class="player-item__share">45.0%</span>
-                                </div>
-                            </div>
-                            <p class="market-card__note">
-                                *기타 브랜드 45%는 1인 비즈니스와 
-                                신규 브랜드의 기회 공간
-                            </p>
+                        <div class="quick-stat" data-aos="fade-up" data-aos-delay="200">
+                            <span class="quick-stat__number" data-countup="52">0</span>
+                            <span class="quick-stat__label">% RTD 점유율</span>
                         </div>
-                    </div>
-
-                    <!-- Growth Drivers Card -->
-                    <div class="market-card market-card--drivers" data-aos="fade-up" data-aos-delay="300">
-                        <div class="market-card__header">
-                            <div class="market-card__icon">
-                                <svg width="48" height="48" viewBox="0 0 48 48" aria-hidden="true">
-                                    <path d="M24 4l4 8h8l-6 6 2 8-8-4-8 4 2-8-6-6h8l4-8z" fill="var(--primary-color)" opacity="0.1"/>
-                                    <path d="M24 8l3 6h6l-4.5 4.5L30 25l-6-3-6 3 1.5-6.5L15 14h6l3-6z" fill="var(--primary-color)"/>
-                                </svg>
-                            </div>
-                            <h3 class="market-card__title">성장 동력</h3>
+                        <div class="quick-stat" data-aos="fade-up" data-aos-delay="300">
+                            <span class="quick-stat__number" data-countup="42">0</span>
+                            <span class="quick-stat__label">% MZ세대 비중</span>
                         </div>
-                        <div class="market-card__content">
-                            <div class="drivers-list">
-                                <div class="driver-item">
-                                    <div class="driver-item__icon">💚</div>
-                                    <div class="driver-item__content">
-                                        <span class="driver-item__title">건강 의식 확산</span>
-                                        <span class="driver-item__impact">+34%</span>
-                                    </div>
-                                </div>
-                                <div class="driver-item">
-                                    <div class="driver-item__icon">🏠</div>
-                                    <div class="driver-item__content">
-                                        <span class="driver-item__title">홈카페 문화</span>
-                                        <span class="driver-item__impact">+28%</span>
-                                    </div>
-                                </div>
-                                <div class="driver-item">
-                                    <div class="driver-item__icon">⚡</div>
-                                    <div class="driver-item__content">
-                                        <span class="driver-item__title">편의성 추구</span>
-                                        <span class="driver-item__impact">+19%</span>
-                                    </div>
-                                </div>
-                                <div class="driver-item">
-                                    <div class="driver-item__icon">🌱</div>
-                                    <div class="driver-item__content">
-                                        <span class="driver-item__title">친환경 관심</span>
-                                        <span class="driver-item__impact">+16%</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Regional Analysis Card -->
-                    <div class="market-card market-card--regional" data-aos="fade-up" data-aos-delay="400">
-                        <div class="market-card__header">
-                            <div class="market-card__icon">
-                                <svg width="48" height="48" viewBox="0 0 48 48" aria-hidden="true">
-                                    <circle cx="24" cy="16" r="8" fill="var(--primary-color)" opacity="0.1"/>
-                                    <path d="M24 2c6.62 0 12 5.38 12 12 0 3-1.2 5.72-3.14 7.68L24 32l-8.86-10.32A11.94 11.94 0 0112 14c0-6.62 5.38-12 12-12zm0 6c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6z" fill="var(--primary-color)"/>
-                                </svg>
-                            </div>
-                            <h3 class="market-card__title">지역별 성장률</h3>
-                        </div>
-                        <div class="market-card__content">
-                            <div class="regional-chart">
-                                <canvas id="section1-regional-chart" width="300" height="200" aria-label="지역별 차 음료 시장 성장률 차트"></canvas>
-                            </div>
-                            <div class="regional-insights">
-                                <div class="regional-insight">
-                                    <span class="regional-insight__region">서울/경기</span>
-                                    <span class="regional-insight__value">+15.2%</span>
-                                </div>
-                                <div class="regional-insight">
-                                    <span class="regional-insight__region">부산/울산</span>
-                                    <span class="regional-insight__value">+11.8%</span>
-                                </div>
-                                <div class="regional-insight">
-                                    <span class="regional-insight__region">대구/경북</span>
-                                    <span class="regional-insight__value">+9.4%</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Market Opportunities Card -->
-                    <div class="market-card market-card--opportunities market-card--full" data-aos="fade-up" data-aos-delay="500">
-                        <div class="market-card__header">
-                            <div class="market-card__icon">
-                                <svg width="48" height="48" viewBox="0 0 48 48" aria-hidden="true">
-                                    <rect x="6" y="6" width="36" height="36" rx="4" fill="var(--primary-color)" opacity="0.1"/>
-                                    <path d="M18 28l-8-8 2-2 6 6 16-16 2 2-18 18z" fill="var(--primary-color)"/>
-                                </svg>
-                            </div>
-                            <h3 class="market-card__title">1인 비즈니스 기회 지도</h3>
-                        </div>
-                        <div class="market-card__content">
-                            <div class="opportunities-matrix">
-                                <div class="opportunity-quadrant opportunity-quadrant--high-low">
-                                    <h4 class="opportunity-quadrant__title">🎯 즉시 진입</h4>
-                                    <p class="opportunity-quadrant__description">높은 수요, 낮은 경쟁</p>
-                                    <ul class="opportunity-quadrant__items">
-                                        <li>기능성 허브티</li>
-                                        <li>시니어 맞춤형</li>
-                                        <li>지역 특산 차</li>
-                                    </ul>
-                                    <div class="opportunity-quadrant__potential">잠재수익: 높음</div>
-                                </div>
-                                
-                                <div class="opportunity-quadrant opportunity-quadrant--high-high">
-                                    <h4 class="opportunity-quadrant__title">⚡ 차별화 필수</h4>
-                                    <p class="opportunity-quadrant__description">높은 수요, 높은 경쟁</p>
-                                    <ul class="opportunity-quadrant__items">
-                                        <li>RTD 녹차/홍차</li>
-                                        <li>콜드브루 차</li>
-                                        <li>프리미엄 블렌딩</li>
-                                    </ul>
-                                    <div class="opportunity-quadrant__potential">잠재수익: 중상</div>
-                                </div>
-                                
-                                <div class="opportunity-quadrant opportunity-quadrant--low-low">
-                                    <h4 class="opportunity-quadrant__title">🔬 시장 개척</h4>
-                                    <p class="opportunity-quadrant__description">낮은 수요, 낮은 경쟁</p>
-                                    <ul class="opportunity-quadrant__items">
-                                        <li>발효차 RTD</li>
-                                        <li>차+프로바이오틱스</li>
-                                        <li>펫 전용 차</li>
-                                    </ul>
-                                    <div class="opportunity-quadrant__potential">잠재수익: 미지수</div>
-                                </div>
-                                
-                                <div class="opportunity-quadrant opportunity-quadrant--low-high">
-                                    <h4 class="opportunity-quadrant__title">❌ 진입 비추천</h4>
-                                    <p class="opportunity-quadrant__description">낮은 수요, 높은 경쟁</p>
-                                    <ul class="opportunity-quadrant__items">
-                                        <li>일반 녹차 RTD</li>
-                                        <li>대중적 아이스티</li>
-                                        <li>저가 믹스류</li>
-                                    </ul>
-                                    <div class="opportunity-quadrant__potential">잠재수익: 낮음</div>
-                                </div>
-                            </div>
+                        <div class="quick-stat" data-aos="fade-up" data-aos-delay="400">
+                            <span class="quick-stat__number" data-countup="89">0</span>
+                            <span class="quick-stat__label">% 기능성 선호</span>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
         
-        <!-- Section 2: RTD (Ready-to-Drink) Trends -->
-        <section class="section section--rtd" id="rtd">
+        <!-- Dashboard Grid -->
+        <section class="section">
             <div class="container">
-                <header class="section__header" data-aos="fade-up">
-                    <span class="section__tag">Section 02</span>
-                    <h2 class="section__title">RTD 차 음료의 폭발적 성장, 그 이유는?</h2>
+                <div class="section__header" data-aos="fade-up">
+                    <span class="section__tag">Dashboard Overview</span>
+                    <h2 class="section__title">상세 분석 섹션 탐색</h2>
                     <p class="section__description">
-                        Ready-to-Drink 시장의 급성장 배경을 분석하고,
-                        성공 브랜드들의 전략적 포인트를 파헤칩니다.
+                        각 섹션별로 심화된 데이터 분석과 인사이트를 제공합니다
                     </p>
-                </header>
+                </div>
                 
-                <div class="rtd__content">
-                    <!-- RTD Growth Chart -->
-                    <div class="rtd-growth" data-aos="fade-up">
-                        <div class="rtd-growth__header">
-                            <h3 class="rtd-growth__title">RTD 차 음료 성장 추이</h3>
-                            <div class="rtd-growth__period">
-                                <span class="period-selector period-selector--active" data-period="3year">3년</span>
-                                <span class="period-selector" data-period="5year">5년</span>
-                                <span class="period-selector" data-period="10year">10년</span>
+                <div class="dashboard-grid">
+                    <!-- Market Overview Card -->
+                    <article class="insight-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="insight-card__header">
+                            <div class="insight-card__icon insight-card__icon--market">📊</div>
+                        </div>
+                        <h3 class="insight-card__title">시장 현황 분석</h3>
+                        <p class="insight-card__description">
+                            차 음료 시장의 전체 규모, 지역별 성장률, 글로벌 비교 데이터를 통한 
+                            시장 포지셔닝 분석을 제공합니다.
+                        </p>
+                        <div class="insight-card__stats">
+                            <div class="stat-item">
+                                <span class="stat-item__number">4.2조원</span>
+                                <span class="stat-item__label">총 시장규모</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-item__number">+38%</span>
+                                <span class="stat-item__label">연평균 성장</span>
                             </div>
                         </div>
-                        
-                        <div class="rtd-growth__chart">
-                            <canvas id="section2-rtd-chart" width="800" height="400" aria-label="RTD 차 음료 시장 성장 추이 차트"></canvas>
-                        </div>
-                        
-                        <div class="rtd-growth__insights">
-                            <div class="growth-insight">
-                                <span class="growth-insight__label">2022-2024 CAGR</span>
-                                <span class="growth-insight__value growth-insight__value--primary">47.2%</span>
-                            </div>
-                            <div class="growth-insight">
-                                <span class="growth-insight__label">시장 점유율</span>
-                                <span class="growth-insight__value growth-insight__value--secondary">34.8%</span>
-                            </div>
-                            <div class="growth-insight">
-                                <span class="growth-insight__label">예상 2025</span>
-                                <span class="growth-insight__value growth-insight__value--accent">52.1%</span>
-                            </div>
-                        </div>
-                    </div>
+                        <a href="market-overview.html" class="insight-card__link">
+                            상세 분석 보기
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                <path d="M8 2l6 6-6 6V10H2V6h6V2z"/>
+                            </svg>
+                        </a>
+                    </article>
                     
-                    <!-- Product Categories -->
-                    <div class="rtd-categories" data-aos="fade-up" data-aos-delay="200">
-                        <h3 class="rtd-categories__title">카테고리별 성장 분석</h3>
-                        
-                        <div class="categories-grid">
-                            <!-- Green Tea RTD -->
-                            <div class="category-card category-card--green">
-                                <div class="category-card__header">
-                                    <div class="category-card__icon">🍃</div>
-                                    <h4 class="category-card__name">녹차 RTD</h4>
-                                    <span class="category-card__growth">+42%</span>
-                                </div>
-                                
-                                <div class="category-card__body">
-                                    <div class="category-metric">
-                                        <span class="category-metric__label">시장 점유율</span>
-                                        <div class="category-metric__bar">
-                                            <div class="category-metric__fill" style="width: 38%"></div>
-                                        </div>
-                                        <span class="category-metric__value">38%</span>
-                                    </div>
-                                    
-                                    <div class="category-trends">
-                                        <div class="trend-tag trend-tag--hot">안티에이징</div>
-                                        <div class="trend-tag trend-tag--rising">콜드브루</div>
-                                        <div class="trend-tag trend-tag--stable">무설탕</div>
-                                    </div>
-                                    
-                                    <p class="category-card__description">
-                                        건강 기능성과 전통적 친숙함으로 
-                                        꾸준한 성장세 유지
-                                    </p>
-                                </div>
+                    <!-- RTD Trends Card -->
+                    <article class="insight-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="insight-card__header">
+                            <div class="insight-card__icon insight-card__icon--rtd">🚀</div>
+                        </div>
+                        <h3 class="insight-card__title">RTD 트렌드 분석</h3>
+                        <p class="insight-card__description">
+                            Ready-to-Drink 차 음료의 급성장 배경, 브랜드별 시장점유율, 
+                            혁신 트렌드와 성공 사례를 분석합니다.
+                        </p>
+                        <div class="insight-card__stats">
+                            <div class="stat-item">
+                                <span class="stat-item__number">47.2%</span>
+                                <span class="stat-item__label">CAGR 성장</span>
                             </div>
-                            
-                            <!-- Herbal Tea RTD -->
-                            <div class="category-card category-card--herbal">
-                                <div class="category-card__header">
-                                    <div class="category-card__icon">🌿</div>
-                                    <h4 class="category-card__name">허브차 RTD</h4>
-                                    <span class="category-card__growth">+67%</span>
-                                </div>
-                                
-                                <div class="category-card__body">
-                                    <div class="category-metric">
-                                        <span class="category-metric__label">시장 점유율</span>
-                                        <div class="category-metric__bar">
-                                            <div class="category-metric__fill" style="width: 23%"></div>
-                                        </div>
-                                        <span class="category-metric__value">23%</span>
-                                    </div>
-                                    
-                                    <div class="category-trends">
-                                        <div class="trend-tag trend-tag--hot">스트레스 케어</div>
-                                        <div class="trend-tag trend-tag--hot">수면 도움</div>
-                                        <div class="trend-tag trend-tag--rising">면역력</div>
-                                    </div>
-                                    
-                                    <p class="category-card__description">
-                                        기능성 특화로 가장 빠른 
-                                        성장률 기록 중
-                                    </p>
-                                </div>
-                            </div>
-                            
-                            <!-- Black Tea RTD -->
-                            <div class="category-card category-card--black">
-                                <div class="category-card__header">
-                                    <div class="category-card__icon">🫖</div>
-                                    <h4 class="category-card__name">홍차 RTD</h4>
-                                    <span class="category-card__growth">+31%</span>
-                                </div>
-                                
-                                <div class="category-card__body">
-                                    <div class="category-metric">
-                                        <span class="category-metric__label">시장 점유율</span>
-                                        <div class="category-metric__bar">
-                                            <div class="category-metric__fill" style="width: 28%"></div>
-                                        </div>
-                                        <span class="category-metric__value">28%</span>
-                                    </div>
-                                    
-                                    <div class="category-trends">
-                                        <div class="trend-tag trend-tag--rising">프리미엄 블렌드</div>
-                                        <div class="trend-tag trend-tag--stable">밀크티</div>
-                                        <div class="trend-tag trend-tag--rising">디카페인</div>
-                                    </div>
-                                    
-                                    <p class="category-card__description">
-                                        다양한 블렌딩으로 
-                                        안정적 성장 지속
-                                    </p>
-                                </div>
-                            </div>
-                            
-                            <!-- Specialty Tea RTD -->
-                            <div class="category-card category-card--specialty">
-                                <div class="category-card__header">
-                                    <div class="category-card__icon">✨</div>
-                                    <h4 class="category-card__name">특수차 RTD</h4>
-                                    <span class="category-card__growth">+89%</span>
-                                </div>
-                                
-                                <div class="category-card__body">
-                                    <div class="category-metric">
-                                        <span class="category-metric__label">시장 점유율</span>
-                                        <div class="category-metric__bar">
-                                            <div class="category-metric__fill" style="width: 11%"></div>
-                                        </div>
-                                        <span class="category-metric__value">11%</span>
-                                    </div>
-                                    
-                                    <div class="category-trends">
-                                        <div class="trend-tag trend-tag--hot">콤부차</div>
-                                        <div class="trend-tag trend-tag--hot">발효차</div>
-                                        <div class="trend-tag trend-tag--rising">차+CBD</div>
-                                    </div>
-                                    
-                                    <p class="category-card__description">
-                                        혁신적 제품으로 폭발적 
-                                        성장률 달성
-                                    </p>
-                                </div>
+                            <div class="stat-item">
+                                <span class="stat-item__number">67%</span>
+                                <span class="stat-item__label">허브차 성장</span>
                             </div>
                         </div>
-                    </div>
+                        <a href="rtd-trends.html" class="insight-card__link">
+                            트렌드 분석 보기
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                <path d="M8 2l6 6-6 6V10H2V6h6V2z"/>
+                            </svg>
+                        </a>
+                    </article>
                     
-                    <!-- Success Stories -->
-                    <div class="success-stories" data-aos="fade-up" data-aos-delay="300">
-                        <h3 class="success-stories__title">성공 브랜드 케이스 스터디</h3>
-                        
-                        <div class="stories-container">
-                            <!-- Story 1: 프리미엄 차 브랜드 -->
-                            <article class="story-card story-card--premium">
-                                <div class="story-card__image">
-                                    <div class="story-card__placeholder">
-                                        <svg width="60" height="60" viewBox="0 0 60 60" aria-hidden="true">
-                                            <rect width="60" height="60" rx="8" fill="var(--primary-color)" opacity="0.1"/>
-                                            <path d="M30 15c8.28 0 15 6.72 15 15s-6.72 15-15 15-15-6.72-15-15 6.72-15 15-15zm0 6c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9z" fill="var(--primary-color)"/>
-                                        </svg>
-                                    </div>
-                                </div>
-                                
-                                <div class="story-card__content">
-                                    <div class="story-card__header">
-                                        <h4 class="story-card__brand">오설록</h4>
-                                        <span class="story-card__category">프리미엄 RTD</span>
-                                    </div>
-                                    
-                                    <div class="story-card__metrics">
-                                        <div class="metric">
-                                            <span class="metric__value">78%</span>
-                                            <span class="metric__label">매출 성장</span>
-                                        </div>
-                                        <div class="metric">
-                                            <span class="metric__value">34</span>
-                                            <span class="metric__label">신제품 수</span>
-                                        </div>
-                                    </div>
-                                    
-                                    <p class="story-card__description">
-                                        프리미엄 차 문화를 RTD로 대중화하며 
-                                        브랜드 신뢰도를 바탕으로 급성장
-                                    </p>
-                                    
-                                    <div class="story-card__insights">
-                                        <div class="insight-point">
-                                            <span class="insight-point__icon">🎯</span>
-                                            <span class="insight-point__text">브랜드 헤리티지 활용</span>
-                                        </div>
-                                        <div class="insight-point">
-                                            <span class="insight-point__icon">✨</span>
-                                            <span class="insight-point__text">프리미엄 포지셔닝</span>
-                                        </div>
-                                        <div class="insight-point">
-                                            <span class="insight-point__icon">📱</span>
-                                            <span class="insight-point__text">MZ세대 타겟 마케팅</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </article>
+                    <!-- Consumer Analysis Card -->
+                    <article class="insight-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="insight-card__header">
+                            <div class="insight-card__icon insight-card__icon--consumer">👥</div>
                         </div>
-                    </div>
+                        <h3 class="insight-card__title">소비자 행동 분석</h3>
+                        <p class="insight-card__description">
+                            연령별 소비 패턴, 구매 결정 요인, 라이프스타일 세그먼트별 
+                            선호도 분석과 소비자 여정 매핑을 제공합니다.
+                        </p>
+                        <div class="insight-card__stats">
+                            <div class="stat-item">
+                                <span class="stat-item__number">42%</span>
+                                <span class="stat-item__label">MZ세대 비중</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-item__number">77%</span>
+                                <span class="stat-item__label">정기 구매</span>
+                            </div>
+                        </div>
+                        <a href="consumer-analysis.html" class="insight-card__link">
+                            소비자 분석 보기
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                <path d="M8 2l6 6-6 6V10H2V6h6V2z"/>
+                            </svg>
+                        </a>
+                    </article>
+                    
+                    <!-- 2025 Forecast Card -->
+                    <article class="insight-card" data-aos="fade-up" data-aos-delay="400">
+                        <div class="insight-card__header">
+                            <div class="insight-card__icon insight-card__icon--forecast">🔮</div>
+                        </div>
+                        <h3 class="insight-card__title">2025년 시장 전망</h3>
+                        <p class="insight-card__description">
+                            AI 기술 도입, 신흥 트렌드 예측, 1인 비즈니스 기회 분석과 
+                            성공 로드맵을 통한 미래 시장 전략을 제시합니다.
+                        </p>
+                        <div class="insight-card__stats">
+                            <div class="stat-item">
+                                <span class="stat-item__number">3.2조원</span>
+                                <span class="stat-item__label">예상 시장규모</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-item__number">156%</span>
+                                <span class="stat-item__label">기능성차 성장</span>
+                            </div>
+                        </div>
+                        <a href="forecast-2025.html" class="insight-card__link">
+                            미래 전망 보기
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                <path d="M8 2l6 6-6 6V10H2V6h6V2z"/>
+                            </svg>
+                        </a>
+                    </article>
+                    
+                    <!-- Expert Insights Card -->
+                    <article class="insight-card" data-aos="fade-up" data-aos-delay="500">
+                        <div class="insight-card__header">
+                            <div class="insight-card__icon insight-card__icon--expert">👨‍💼</div>
+                        </div>
+                        <h3 class="insight-card__title">전문가 인사이트</h3>
+                        <p class="insight-card__description">
+                            업계 전문가 3명의 심층 인터뷰, Q&A 세션을 통한 
+                            실무 경험과 성공 전략, 시장 진입 가이드를 제공합니다.
+                        </p>
+                        <div class="insight-card__stats">
+                            <div class="stat-item">
+                                <span class="stat-item__number">3명</span>
+                                <span class="stat-item__label">전문가 패널</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-item__number">100%</span>
+                                <span class="stat-item__label">고객중심 합의</span>
+                            </div>
+                        </div>
+                        <a href="expert-insights.html" class="insight-card__link">
+                            전문가 의견 보기
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                <path d="M8 2l6 6-6 6V10H2V6h6V2z"/>
+                            </svg>
+                        </a>
+                    </article>
                 </div>
             </div>
         </section>
         
-        <!-- Section 3: Consumer Analysis -->
-        <section class="section section--consumer" id="consumer">
-            <div class="container">
-                <header class="section__header" data-aos="fade-up">
-                    <span class="section__tag">Section 03</span>
-                    <h2 class="section__title">누가, 왜 차 음료를 선택하는가?</h2>
-                    <p class="section__description">
-                        소비자 행동 패턴을 심층 분석하여 타겟 고객층의 
-                        진짜 니즈와 구매 동기를 파악합니다.
-                    </p>
-                </header>
-                
-                <div class="consumer__content">
-                    <!-- Demographics Overview -->
-                    <div class="demographics-overview" data-aos="fade-up">
-                        <h3 class="demographics-overview__title">차 음료 소비자 프로필</h3>
-                        
-                        <div class="demographics-grid">
-                            <!-- Age Distribution -->
-                            <div class="demo-card demo-card--age">
-                                <div class="demo-card__header">
-                                    <h4 class="demo-card__title">연령대별 분포</h4>
-                                    <span class="demo-card__subtitle">2024년 기준</span>
-                                </div>
-                                
-                                <div class="demo-card__chart">
-                                    <canvas id="section3-age-chart" width="300" height="200" aria-label="연령대별 차 음료 소비 분포 차트"></canvas>
-                                </div>
-                                
-                                <div class="demo-card__insights">
-                                    <div class="age-insight">
-                                        <span class="age-insight__range">20-30대</span>
-                                        <span class="age-insight__percentage">42%</span>
-                                        <span class="age-insight__trend trend-up">+8%</span>
-                                    </div>
-                                    <div class="age-insight">
-                                        <span class="age-insight__range">30-40대</span>
-                                        <span class="age-insight__percentage">31%</span>
-                                        <span class="age-insight__trend trend-stable">+2%</span>
-                                    </div>
-                                    <div class="age-insight">
-                                        <span class="age-insight__range">40-50대</span>
-                                        <span class="age-insight__percentage">18%</span>
-                                        <span class="age-insight__trend trend-up">+5%</span>
-                                    </div>
-                                    <div class="age-insight">
-                                        <span class="age-insight__range">50대 이상</span>
-                                        <span class="age-insight__percentage">9%</span>
-                                        <span class="age-insight__trend trend-down">-3%</span>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Gender & Income -->
-                            <div class="demo-card demo-card--profile">
-                                <div class="demo-card__header">
-                                    <h4 class="demo-card__title">성별 & 소득 분포</h4>
-                                    <span class="demo-card__subtitle">주요 타겟층 특성</span>
-                                </div>
-                                
-                                <div class="profile-stats">
-                                    <div class="profile-stat">
-                                        <div class="profile-stat__icon">👩</div>
-                                        <div class="profile-stat__content">
-                                            <span class="profile-stat__label">여성 소비자</span>
-                                            <span class="profile-stat__value">63%</span>
-                                            <p class="profile-stat__note">건강 및 미용 관심 높음</p>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="profile-stat">
-                                        <div class="profile-stat__icon">👨</div>
-                                        <div class="profile-stat__content">
-                                            <span class="profile-stat__label">남성 소비자</span>
-                                            <span class="profile-stat__value">37%</span>
-                                            <p class="profile-stat__note">편의성과 기능성 중시</p>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="profile-stat">
-                                        <div class="profile-stat__icon">💰</div>
-                                        <div class="profile-stat__content">
-                                            <span class="profile-stat__label">평균 월소득</span>
-                                            <span class="profile-stat__value">450만원</span>
-                                            <p class="profile-stat__note">중산층 이상 집중</p>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="profile-stat">
-                                        <div class="profile-stat__icon">🎓</div>
-                                        <div class="profile-stat__content">
-                                            <span class="profile-stat__label">대졸 이상</span>
-                                            <span class="profile-stat__value">78%</span>
-                                            <p class="profile-stat__note">높은 교육 수준</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Lifestyle Segments -->
-                            <div class="demo-card demo-card--lifestyle">
-                                <div class="demo-card__header">
-                                    <h4 class="demo-card__title">라이프스타일 세그먼트</h4>
-                                    <span class="demo-card__subtitle">주요 소비자 유형</span>
-                                </div>
-                                
-                                <div class="lifestyle-segments">
-                                    <div class="segment-item segment-item--health">
-                                        <div class="segment-item__icon">🌱</div>
-                                        <div class="segment-item__content">
-                                            <h5 class="segment-item__title">건강 추구형</h5>
-                                            <span class="segment-item__percentage">34%</span>
-                                            <p class="segment-item__description">
-                                                유기농, 무첨가, 기능성 성분을 
-                                                적극적으로 찾는 소비자
-                                            </p>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="segment-item segment-item--convenience">
-                                        <div class="segment-item__icon">⚡</div>
-                                        <div class="segment-item__content">
-                                            <h5 class="segment-item__title">편의성 중시형</h5>
-                                            <span class="segment-item__percentage">28%</span>
-                                            <p class="segment-item__description">
-                                                바쁜 일상 속에서 간편하게 
-                                                섭취할 수 있는 제품 선호
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Section 4: 2025 Forecast -->
-        <section class="section section--forecast" id="forecast">
-            <div class="container">
-                <header class="section__header" data-aos="fade-up">
-                    <span class="section__tag">Section 04</span>
-                    <h2 class="section__title">2025년, 차 음료 시장은 어디로 향할까?</h2>
-                    <p class="section__description">
-                        데이터 분석을 바탕으로 한 2025년 시장 전망과 
-                        새롭게 부상할 비즈니스 기회를 예측합니다.
-                    </p>
-                </header>
-                
-                <div class="forecast__content">
-                    <!-- Market Predictions -->
-                    <div class="market-predictions" data-aos="fade-up">
-                        <h3 class="market-predictions__title">2025 시장 전망</h3>
-                        
-                        <div class="predictions-grid">
-                            <!-- Overall Market Growth -->
-                            <div class="prediction-card prediction-card--growth">
-                                <div class="prediction-card__header">
-                                    <div class="prediction-card__icon">📈</div>
-                                    <h4 class="prediction-card__title">전체 시장 규모</h4>
-                                </div>
-                                
-                                <div class="prediction-card__forecast">
-                                    <div class="forecast-value">
-                                        <span class="forecast-value__number">3.2</span>
-                                        <span class="forecast-value__unit">조원</span>
-                                        <span class="forecast-value__growth">+39.1%</span>
-                                    </div>
-                                    <p class="forecast-value__note">2024년 대비 약 9천억원 증가</p>
-                                </div>
-                                
-                                <div class="prediction-factors">
-                                    <div class="factor-item">
-                                        <span class="factor-item__icon">🌱</span>
-                                        <span class="factor-item__text">건강 의식 확산</span>
-                                    </div>
-                                    <div class="factor-item">
-                                        <span class="factor-item__icon">🚀</span>
-                                        <span class="factor-item__text">혁신 제품 출시</span>
-                                    </div>
-                                    <div class="factor-item">
-                                        <span class="factor-item__icon">🌍</span>
-                                        <span class="factor-item__text">글로벌 트렌드 유입</span>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- RTD Segment Growth -->
-                            <div class="prediction-card prediction-card--rtd">
-                                <div class="prediction-card__header">
-                                    <div class="prediction-card__icon">🥤</div>
-                                    <h4 class="prediction-card__title">RTD 차 음료</h4>
-                                </div>
-                                
-                                <div class="prediction-card__forecast">
-                                    <div class="forecast-value">
-                                        <span class="forecast-value__number">58.3</span>
-                                        <span class="forecast-value__unit">%</span>
-                                        <span class="forecast-value__growth">+5.5%p</span>
-                                    </div>
-                                    <p class="forecast-value__note">전체 시장 점유율 예상</p>
-                                </div>
-                                
-                                <div class="prediction-factors">
-                                    <div class="factor-item">
-                                        <span class="factor-item__icon">⚡</span>
-                                        <span class="factor-item__text">편의성 니즈 증가</span>
-                                    </div>
-                                    <div class="factor-item">
-                                        <span class="factor-item__icon">🧪</span>
-                                        <span class="factor-item__text">기능성 차별화</span>
-                                    </div>
-                                    <div class="factor-item">
-                                        <span class="factor-item__icon">📱</span>
-                                        <span class="factor-item__text">온라인 채널 확장</span>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Premium Segment -->
-                            <div class="prediction-card prediction-card--premium">
-                                <div class="prediction-card__header">
-                                    <div class="prediction-card__icon">✨</div>
-                                    <h4 class="prediction-card__title">프리미엄 세그먼트</h4>
-                                </div>
-                                
-                                <div class="prediction-card__forecast">
-                                    <div class="forecast-value">
-                                        <span class="forecast-value__number">84.2</span>
-                                        <span class="forecast-value__unit">%</span>
-                                        <span class="forecast-value__growth">+21.8%</span>
-                                    </div>
-                                    <p class="forecast-value__note">성장률 (vs 일반 제품 23.4%)</p>
-                                </div>
-                                
-                                <div class="prediction-factors">
-                                    <div class="factor-item">
-                                        <span class="factor-item__icon">💎</span>
-                                        <span class="factor-item__text">고급화 지향</span>
-                                    </div>
-                                    <div class="factor-item">
-                                        <span class="factor-item__icon">🌿</span>
-                                        <span class="factor-item__text">오가닉 트렌드</span>
-                                    </div>
-                                    <div class="factor-item">
-                                        <span class="factor-item__icon">🎯</span>
-                                        <span class="factor-item__text">개인 맞춤형</span>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Functional Tea -->
-                            <div class="prediction-card prediction-card--functional">
-                                <div class="prediction-card__header">
-                                    <div class="prediction-card__icon">💊</div>
-                                    <h4 class="prediction-card__title">기능성 차 음료</h4>
-                                </div>
-                                
-                                <div class="prediction-card__forecast">
-                                    <div class="forecast-value">
-                                        <span class="forecast-value__number">156.7</span>
-                                        <span class="forecast-value__unit">%</span>
-                                        <span class="forecast-value__growth">+89.4%</span>
-                                    </div>
-                                    <p class="forecast-value__note">성장률 (가장 빠른 성장 예상)</p>
-                                </div>
-                                
-                                <div class="prediction-factors">
-                                    <div class="factor-item">
-                                        <span class="factor-item__icon">🏥</span>
-                                        <span class="factor-item__text">헬스케어 융합</span>
-                                    </div>
-                                    <div class="factor-item">
-                                        <span class="factor-item__icon">🔬</span>
-                                        <span class="factor-item__text">과학적 근거</span>
-                                    </div>
-                                    <div class="factor-item">
-                                        <span class="factor-item__icon">🎯</span>
-                                        <span class="factor-item__text">타겟 특화</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__content">
+                <div class="footer__main">
+                    <div class="footer__brand">
+                        <h3 class="footer__title">2024 Tea Beverage Trend Report</h3>
+                        <p class="footer__description">
+                            차 음료 시장의 모든 트렌드와 인사이트를 한 곳에서
+                        </p>
                     </div>
                     
-                    <!-- Emerging Trends -->
-                    <div class="emerging-trends" data-aos="fade-up" data-aos-delay="200">
-                        <h3 class="emerging-trends__title">2025년 주목할 신흥 트렌드</h3>
-                        
-                        <div class="trends-timeline">
-                            <!-- Q1 Trends -->
-                            <div class="trend-quarter">
-                                <div class="quarter-header">
-                                    <span class="quarter-label">Q1 2025</span>
-                                    <h4 class="quarter-title">개인화 & AI 기술 도입</h4>
-                                </div>
-                                
-                                <div class="quarter-trends">
-                                    <div class="trend-item trend-item--ai">
-                                        <div class="trend-item__icon">🤖</div>
-                                        <div class="trend-item__content">
-                                            <h5 class="trend-item__title">AI 맞춤형 블렌딩</h5>
-                                            <p class="trend-item__description">
-                                                개인의 건강 데이터와 선호도를 분석하여 
-                                                맞춤형 차 블렌드를 추천하는 서비스
-                                            </p>
-                                            <div class="trend-item__impact">
-                                                <span class="impact-level impact-level--high">높은 영향도</span>
-                                                <span class="adoption-speed">빠른 확산</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="trend-item trend-item--personalization">
-                                        <div class="trend-item__icon">🎯</div>
-                                        <div class="trend-item__content">
-                                            <h5 class="trend-item__title">개인 맞춤 구독 서비스</h5>
-                                            <p class="trend-item__description">
-                                                생활패턴, 건강상태, 취향을 고려한 
-                                                월간 차 음료 큐레이션 서비스
-                                            </p>
-                                            <div class="trend-item__impact">
-                                                <span class="impact-level impact-level--high">높은 영향도</span>
-                                                <span class="adoption-speed">중간 확산</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                    <div class="footer__links">
+                        <div class="footer__column">
+                            <h4 class="footer__column-title">보고서</h4>
+                            <ul class="footer__list">
+                                <li><a href="index.html" class="footer__link">대시보드</a></li>
+                                <li><a href="market-overview.html" class="footer__link">시장 현황</a></li>
+                                <li><a href="rtd-trends.html" class="footer__link">RTD 트렌드</a></li>
+                                <li><a href="consumer-analysis.html" class="footer__link">소비자 분석</a></li>
+                                <li><a href="forecast-2025.html" class="footer__link">2025 전망</a></li>
+                                <li><a href="expert-insights.html" class="footer__link">전문가 인사이트</a></li>
+                            </ul>
                         </div>
-                    </div>
-                    
-                    <!-- Business Opportunities -->
-                    <div class="business-opportunities" data-aos="fade-up" data-aos-delay="300">
-                        <h3 class="business-opportunities__title">1인 비즈니스를 위한 기회 분석</h3>
                         
-                        <div class="opportunities-grid">
-                            <!-- High Opportunity -->
-                            <div class="opportunity-card opportunity-card--high">
-                                <div class="opportunity-card__header">
-                                    <div class="opportunity-card__level">
-                                        <span class="level-indicator level-indicator--high"></span>
-                                        <span class="level-text">높은 기회</span>
-                                    </div>
-                                    <h4 class="opportunity-card__title">기능성 특화 브랜드</h4>
-                                </div>
-                                
-                                <div class="opportunity-card__content">
-                                    <p class="opportunity-card__description">
-                                        특정 건강 기능에 특화된 차 제품으로 
-                                        틈새시장 공략 및 전문성 확보
-                                    </p>
-                                    
-                                    <div class="opportunity-details">
-                                        <div class="opportunity-detail">
-                                            <span class="detail-label">시장 규모</span>
-                                            <span class="detail-value">4,800억원</span>
-                                        </div>
-                                        <div class="opportunity-detail">
-                                            <span class="detail-label">성장률</span>
-                                            <span class="detail-value">+89.4%</span>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="opportunity-factors">
-                                        <div class="factor-pro">
-                                            <span class="factor-icon">✅</span>
-                                            <span class="factor-text">높은 마진율 (45-60%)</span>
-                                        </div>
-                                        <div class="factor-pro">
-                                            <span class="factor-icon">✅</span>
-                                            <span class="factor-text">차별화된 포지셔닝</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="footer__column">
+                            <h4 class="footer__column-title">데이터</h4>
+                            <ul class="footer__list">
+                                <li><a href="#" class="footer__link">시장 규모 데이터</a></li>
+                                <li><a href="#" class="footer__link">소비자 설문조사</a></li>
+                                <li><a href="#" class="footer__link">브랜드 분석</a></li>
+                                <li><a href="#" class="footer__link">트렌드 키워드</a></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="footer__column">
+                            <h4 class="footer__column-title">비즈니스</h4>
+                            <ul class="footer__list">
+                                <li><a href="#" class="footer__link">창업 가이드</a></li>
+                                <li><a href="#" class="footer__link">마케팅 전략</a></li>
+                                <li><a href="#" class="footer__link">성공 사례</a></li>
+                                <li><a href="#" class="footer__link">전문가 상담</a></li>
+                            </ul>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
-        
-        <!-- Section 5: Expert Insights -->
-        <section class="section section--experts" id="experts">
-            <div class="container">
-                <header class="section__header" data-aos="fade-up">
-                    <span class="section__tag">Section 05</span>
-                    <h2 class="section__title">전문가들이 말하는 차 시장의 미래</h2>
-                    <p class="section__description">
-                        업계 전문가들의 인사이트와 실무 경험을 바탕으로 한 
-                        차 음료 시장의 핵심 트렌드와 성공 전략을 공유합니다.
-                    </p>
-                </header>
                 
-                <div class="experts__content">
-                    <!-- Expert Panels -->
-                    <div class="expert-panels" data-aos="fade-up">
-                        <h3 class="expert-panels__title">전문가 패널 인터뷰</h3>
-                        
-                        <div class="panels-grid">
-                            <!-- Food & Beverage Industry Expert -->
-                            <article class="expert-card expert-card--industry">
-                                <div class="expert-card__profile">
-                                    <div class="expert-card__avatar">
-                                        <svg width="80" height="80" viewBox="0 0 80 80" aria-hidden="true">
-                                            <circle cx="40" cy="40" r="38" fill="var(--primary-color)" opacity="0.1"/>
-                                            <circle cx="40" cy="32" r="12" fill="var(--primary-color)" opacity="0.3"/>
-                                            <path d="M20 65c0-11 9-20 20-20s20 9 20 20" fill="var(--primary-color)" opacity="0.3"/>
-                                        </svg>
-                                        <span class="expert-card__initial">김</span>
-                                    </div>
-                                    <div class="expert-card__info">
-                                        <h4 class="expert-card__name">김마케팅</h4>
-                                        <p class="expert-card__title">F&B 산업 분석가</p>
-                                        <p class="expert-card__company">한국식품산업연구원 수석연구원</p>
-                                        <div class="expert-card__credentials">
-                                            <span class="credential-tag">15년 경력</span>
-                                            <span class="credential-tag">시장분석 전문</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="expert-card__content">
-                                    <blockquote class="expert-quote">
-                                        <p class="expert-quote__text">
-                                            "차 음료 시장의 가장 큰 변화는 <strong>'기능성의 세분화'</strong>입니다. 
-                                            단순히 건강에 좋다는 막연한 메시지가 아니라, 
-                                            '수면 개선', '집중력 향상', '소화 도움' 등 
-                                            구체적인 기능을 제시하는 제품들이 성공하고 있어요."
-                                        </p>
-                                    </blockquote>
-                                    
-                                    <div class="expert-insights">
-                                        <h5 class="insights-title">핵심 인사이트</h5>
-                                        <ul class="insights-list">
-                                            <li class="insight-item">
-                                                <span class="insight-icon">🎯</span>
-                                                <span class="insight-text">타겟 세분화가 성공의 열쇠</span>
-                                            </li>
-                                            <li class="insight-item">
-                                                <span class="insight-icon">📊</span>
-                                                <span class="insight-text">데이터 기반 제품 개발 필수</span>
-                                            </li>
-                                            <li class="insight-item">
-                                                <span class="insight-icon">🔬</span>
-                                                <span class="insight-text">과학적 근거 제시 중요성 증대</span>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    
-                                    <div class="expert-prediction">
-                                        <h5 class="prediction-title">2025 전망</h5>
-                                        <p class="prediction-text">
-                                            "기능성 차 시장은 <span class="highlight">연 150% 이상</span> 성장할 것으로 예상합니다. 
-                                            특히 개인 맞춤형 기능성 제품이 주류가 될 것입니다."
-                                        </p>
-                                    </div>
-                                </div>
-                            </article>
-                            
-                            <!-- Marketing & Branding Expert -->
-                            <article class="expert-card expert-card--marketing">
-                                <div class="expert-card__profile">
-                                    <div class="expert-card__avatar">
-                                        <svg width="80" height="80" viewBox="0 0 80 80" aria-hidden="true">
-                                            <circle cx="40" cy="40" r="38" fill="var(--secondary-color)" opacity="0.1"/>
-                                            <circle cx="40" cy="32" r="12" fill="var(--secondary-color)" opacity="0.3"/>
-                                            <path d="M20 65c0-11 9-20 20-20s20 9 20 20" fill="var(--secondary-color)" opacity="0.3"/>
-                                        </svg>
-                                        <span class="expert-card__initial">이</span>
-                                    </div>
-                                    <div class="expert-card__info">
-                                        <h4 class="expert-card__name">이브랜딩</h4>
-                                        <p class="expert-card__title">디지털 마케팅 전문가</p>
-                                        <p class="expert-card__company">브랜드엑스 대표</p>
-                                    </div>
-                                </div>
-                                
-                                <div class="expert-card__content">
-                                    <blockquote class="expert-quote">
-                                        <p class="expert-quote__text">
-                                            "성공하는 차 브랜드들의 공통점은 <strong>'스토리텔링의 차별화'</strong>입니다. 
-                                            단순한 제품 판매가 아니라 라이프스타일을 제안하고, 
-                                            소비자와의 감정적 연결고리를 만드는 브랜드가 승리하고 있습니다."
-                                        </p>
-                                    </blockquote>
-                                    
-                                    <div class="expert-insights">
-                                        <h5 class="insights-title">핵심 인사이트</h5>
-                                        <ul class="insights-list">
-                                            <li class="insight-item">
-                                                <span class="insight-icon">📱</span>
-                                                <span class="insight-text">소셜미디어 중심의 마케팅 필수</span>
-                                            </li>
-                                            <li class="insight-item">
-                                                <span class="insight-icon">🎨</span>
-                                                <span class="insight-text">시각적 아이덴티티의 중요성</span>
-                                            </li>
-                                            <li class="insight-item">
-                                                <span class="insight-icon">👥</span>
-                                                <span class="insight-text">커뮤니티 기반 마케팅 효과</span>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </article>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Footer -->
-        <footer class="footer">
-            <div class="container">
-                <div class="footer__content">
-                    <div class="footer__main">
-                        <div class="footer__brand">
-                            <h3 class="footer__title">2024 Tea Beverage Trend Report</h3>
-                            <p class="footer__description">
-                                차 음료 시장의 모든 트렌드와 인사이트를 한 곳에서
-                            </p>
-                        </div>
-                        
-                        <div class="footer__links">
-                            <div class="footer__column">
-                                <h4 class="footer__column-title">보고서</h4>
-                                <ul class="footer__list">
-                                    <li><a href="#overview" class="footer__link">시장 현황</a></li>
-                                    <li><a href="#rtd" class="footer__link">RTD 트렌드</a></li>
-                                    <li><a href="#consumer" class="footer__link">소비자 분석</a></li>
-                                    <li><a href="#forecast" class="footer__link">2025 전망</a></li>
-                                    <li><a href="#experts" class="footer__link">전문가 인사이트</a></li>
-                                </ul>
-                            </div>
-                        </div>
+                <div class="footer__bottom">
+                    <div class="footer__copyright">
+                        <p>&copy; 2024 Tea Beverage Trend Report. All rights reserved.</p>
                     </div>
                     
-                    <div class="footer__bottom">
-                        <div class="footer__copyright">
-                            <p>&copy; 2024 Tea Beverage Trend Report. All rights reserved.</p>
-                        </div>
-                        
-                        <div class="footer__meta">
-                            <span class="footer__updated">최종 업데이트: 2024년 12월</span>
-                            <span class="footer__version">v1.0</span>
-                        </div>
+                    <div class="footer__meta">
+                        <span class="footer__updated">최종 업데이트: 2024년 12월</span>
+                        <span class="footer__version">v1.0</span>
                     </div>
                 </div>
             </div>
-        </footer>
+        </div>
+    </footer>
 
     <!-- JavaScript Libraries -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/countup.js@2.0.8/dist/countUp.min.js"></script>
-
-    <!-- Custom JavaScript -->
-    <script>
-        // Initialize AOS
-        AOS.init({
-            duration: 1000,
-            once: true,
-            offset: 100
-        });
-
-        // Chart configurations with unique IDs
-        const chartConfigs = {
-            regional: {
-                data: {
-                    labels: ['서울/경기', '부산/경남', '대구/경북', '광주/전남', '대전/충청', '강원', '제주'],
-                    datasets: [{
-                        label: '성장률 (%)',
-                        data: [45, 38, 32, 41, 35, 28, 52],
-                        backgroundColor: 'var(--primary-color)',
-                        borderRadius: 8
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    plugins: { legend: { display: false } },
-                    scales: { y: { beginAtZero: true, max: 60 } }
-                }
-            },
-            rtd: {
-                data: {
-                    labels: ['2022 Q1', '2022 Q2', '2022 Q3', '2022 Q4', '2023 Q1', '2023 Q2', '2023 Q3', '2023 Q4', '2024 Q1', '2024 Q2', '2024 Q3'],
-                    datasets: [{
-                        label: 'RTD 차 음료 (억원)',
-                        data: [1200, 1350, 1500, 1650, 1800, 2100, 2400, 2650, 2900, 3200, 3500],
-                        borderColor: 'var(--secondary-color)',
-                        backgroundColor: 'rgba(255, 107, 107, 0.1)',
-                        fill: true,
-                        tension: 0.4
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    plugins: { legend: { display: false } },
-                    scales: { y: { beginAtZero: true } }
-                }
-            },
-            age: {
-                data: {
-                    labels: ['20-30대', '30-40대', '40-50대', '50대 이상'],
-                    datasets: [{
-                        data: [42, 31, 18, 9],
-                        backgroundColor: [
-                            'var(--primary-color)',
-                            'var(--secondary-color)', 
-                            'var(--accent-color)',
-                            'rgba(108, 117, 125, 0.7)'
-                        ],
-                        borderWidth: 0
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    plugins: { legend: { position: 'bottom' } }
-                }
-            }
-        };
-
-        // Initialize charts
-        document.addEventListener('DOMContentLoaded', function() {
-            const regionalCtx = document.getElementById('section1-regional-chart');
-            if (regionalCtx) new Chart(regionalCtx, { type: 'bar', ...chartConfigs.regional });
-
-            const rtdCtx = document.getElementById('section2-rtd-chart');
-            if (rtdCtx) new Chart(rtdCtx, { type: 'line', ...chartConfigs.rtd });
-
-            const ageCtx = document.getElementById('section3-age-chart');
-            if (ageCtx) new Chart(ageCtx, { type: 'doughnut', ...chartConfigs.age });
-
-            // Initialize CountUp animations
-            const counters = document.querySelectorAll('[data-countup]');
-            counters.forEach(counter => {
-                const target = parseInt(counter.dataset.countup);
-                const countUp = new CountUp(counter, target, { duration: 2, useEasing: true });
-                
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            countUp.start();
-                            observer.unobserve(entry.target);
-                        }
-                    });
-                });
-                observer.observe(counter);
-            });
-        });
-
-        // Smooth scroll navigation
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            });
-        });
-    </script>
+    <script src="assets/js/main.js"></script>
 
 </body>
 </html>
