@@ -78,7 +78,18 @@ function initializeCounters() {
         
         console.log('Checking CountUp v1.9.3:', {
             'window.CountUp': typeof window.CountUp,
-            'counters found': counters.length
+            'counters found': counters.length,
+            'page URL': window.location.pathname
+        });
+        
+        // 각 카운터의 정보를 출력
+        counters.forEach((counter, index) => {
+            console.log(`Counter ${index + 1}:`, {
+                'element': counter.tagName + '.' + counter.className,
+                'data-countup': counter.dataset.countup,
+                'current text': counter.textContent,
+                'id': counter.id || 'no-id'
+            });
         });
         
         if (typeof window.CountUp !== 'undefined' && counters.length > 0) {
@@ -128,7 +139,12 @@ function initializeCounters() {
             });
             
         } else {
-            console.error('CountUp NOT found!');
+            if (typeof window.CountUp === 'undefined') {
+                console.error('CountUp library NOT loaded! Check CDN link.');
+            }
+            if (counters.length === 0) {
+                console.warn('No elements with [data-countup] attribute found on this page.');
+            }
             
             // 폴백: 직접 값 설정
             counters.forEach(counter => {
@@ -139,12 +155,17 @@ function initializeCounters() {
                 console.log('Fallback set:', value + suffix);
             });
         }
-    }, 200); // 조금 더 기다리기
+    }, 300); // 더 오래 기다리기
 }
 
 // ===== CHART INITIALIZATION =====
 function initializeCharts() {
-    if (typeof Chart === 'undefined') return;
+    if (typeof Chart === 'undefined') {
+        console.warn('Chart.js library not loaded');
+        return;
+    }
+    
+    console.log('Chart.js library found! Initializing charts...');
     
     // Chart.js global configuration
     Chart.defaults.font.family = "'Noto Sans KR', 'Inter', sans-serif";
@@ -156,6 +177,9 @@ function initializeCharts() {
     initializeRegionalChart();
     initializeRTDChart();
     initializeAgeChart();
+    initializeForecastChart();
+    
+    console.log('Charts initialization completed. Active charts:', Object.keys(charts));
 }
 
 // ===== INDIVIDUAL CHART FUNCTIONS =====
@@ -333,6 +357,63 @@ function initializeAgeChart() {
                         padding: 20,
                         usePointStyle: true
                     }
+                }
+            }
+        }
+    });
+}
+
+function initializeForecastChart() {
+    const ctx = document.getElementById('section4-forecast-chart');
+    if (!ctx) return;
+    
+    charts.forecastChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['2024 Q1', '2024 Q2', '2024 Q3', '2024 Q4', '2025 Q1', '2025 Q2', '2025 Q3', '2025 Q4'],
+            datasets: [{
+                label: '시장 규모 (조원)',
+                data: [2.1, 2.3, 2.5, 2.8, 3.0, 3.1, 3.2, 3.2],
+                borderColor: '#42886B',
+                backgroundColor: 'rgba(66, 136, 107, 0.1)',
+                fill: true,
+                tension: 0.4,
+                pointBackgroundColor: '#42886B',
+                pointBorderColor: '#ffffff',
+                pointBorderWidth: 2,
+                pointRadius: 5
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: { display: false }
+            },
+            scales: {
+                x: {
+                    grid: { display: false },
+                    ticks: { color: '#666666' }
+                },
+                y: {
+                    beginAtZero: false,
+                    min: 2.0,
+                    max: 3.5,
+                    grid: { 
+                        color: 'rgba(0,0,0,0.05)',
+                        drawBorder: false
+                    },
+                    ticks: { 
+                        color: '#666666',
+                        callback: function(value) {
+                            return value + '조원';
+                        }
+                    }
+                }
+            },
+            elements: {
+                point: {
+                    hoverRadius: 8
                 }
             }
         }

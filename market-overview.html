@@ -37,7 +37,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     
     <!-- CountUp.js CDN -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/countup.js/2.8.0/countUp.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/countup.js@1.9.3/dist/countUp.min.js"></script>
     
     <!-- Main Stylesheet -->
     <link rel="stylesheet" href="assets/css/main.css">
@@ -312,6 +312,65 @@
 
     <!-- Main Content Start -->
     <main id="main-content" role="main">
+        
+        <!-- Hero Section -->
+        <section class="hero hero--secondary" id="hero">
+            <div class="hero__background">
+                <div class="hero__pattern"></div>
+            </div>
+            
+            <div class="container">
+                <div class="hero__content">
+                    <div class="hero__text" data-aos="fade-up">
+                        <span class="hero__label">Market Overview Analysis</span>
+                        <h1 class="hero__title">
+                            <span class="hero__title-line">차 음료 시장</span>
+                            <span class="hero__title-line hero__title-line--accent">현황 분석</span>
+                        </h1>
+                        <p class="hero__description">
+                            2024년 차 음료 시장의 급격한 변화를 데이터로 분석하고,<br>
+                            새로운 기회의 실체를 파악합니다
+                        </p>
+                        
+                        <div class="hero__stats" data-aos="fade-up" data-aos-delay="200">
+                            <div class="hero__stat">
+                                <span class="hero__stat-number" data-countup="2.3">0</span>
+                                <span class="hero__stat-unit">조원</span>
+                                <span class="hero__stat-label">시장 규모</span>
+                            </div>
+                            <div class="hero__stat-divider"></div>
+                            <div class="hero__stat">
+                                <span class="hero__stat-number" data-countup="12.7">0</span>
+                                <span class="hero__stat-unit">%</span>
+                                <span class="hero__stat-label">성장률</span>
+                            </div>
+                            <div class="hero__stat-divider"></div>
+                            <div class="hero__stat">
+                                <span class="hero__stat-number" data-countup="45">0</span>
+                                <span class="hero__stat-unit">%</span>
+                                <span class="hero__stat-label">신규 기회</span>
+                            </div>
+                        </div>
+                        
+                        <div class="hero__actions" data-aos="fade-up" data-aos-delay="400">
+                            <a href="#market" class="btn btn--primary">
+                                <span>시장 분석 보기</span>
+                                <svg class="btn__icon" width="16" height="16" viewBox="0 0 16 16">
+                                    <path d="M8 12l-4-4h2.5V3h3v5H12l-4 4z" fill="currentColor"/>
+                                </svg>
+                            </a>
+                            <a href="#download" class="btn btn--secondary">
+                                <span>보고서 다운로드</span>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="hero__visual" data-aos="fade-left" data-aos-delay="300">
+                        <canvas id="hero-trend-chart" width="500" height="300" aria-label="차 음료 시장 성장 트렌드 차트"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
         
         <!-- Section 1: Market Overview -->
         <section class="section section--market" id="market">
