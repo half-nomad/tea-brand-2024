@@ -104,4 +104,4 @@ testing/
 # -----------------------
 .vercel
 .netlify
-.firebase
+.firebase.git-credentials
