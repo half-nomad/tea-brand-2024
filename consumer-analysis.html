@@ -45,8 +45,8 @@
     <!-- Consumer Analysis Specific Styles -->
     <style>
         .demographics-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            display: flex;
+            flex-direction: column;
             gap: var(--spacing-xl);
             margin-bottom: var(--spacing-xxl);
         }
@@ -662,7 +662,6 @@
         @media (max-width: 768px) {
             .demographics-grid,
             .behavior-grid {
-                grid-template-columns: 1fr;
                 gap: var(--spacing-lg);
             }
             
