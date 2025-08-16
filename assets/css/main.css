@@ -1226,15 +1226,15 @@ body {
     margin: 0;
 }
 
-/* Expert Highlights (Hero Section Enhancement) */
-.expert-highlights {
+/* Expert Stats Cards (Enhanced Hero Statistics) */
+.expert-stats-cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: var(--spacing-lg);
     margin-top: var(--spacing-xl);
 }
 
-.highlight-card {
+.expert-stat-card {
     background: white;
     border-radius: var(--radius-lg);
     padding: var(--spacing-lg);
@@ -1244,60 +1244,80 @@ body {
     display: flex;
     align-items: center;
     gap: var(--spacing-md);
+    position: relative;
+    overflow: hidden;
 }
 
-.highlight-card:hover {
+.expert-stat-card:hover {
     transform: translateY(-4px);
     box-shadow: 0 8px 30px var(--shadow-medium);
 }
 
-.highlight-card__icon {
+.expert-stat-card:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--gradient-primary);
+}
+
+.expert-stat-card__icon {
     flex-shrink: 0;
-    width: 48px;
-    height: 48px;
+    width: 56px;
+    height: 56px;
     display: flex;
     align-items: center;
     justify-content: center;
+    background: var(--background-light);
+    border-radius: var(--radius-md);
 }
 
-.highlight-card__icon svg {
-    width: 48px;
-    height: 48px;
+.expert-stat-card__icon svg {
+    width: 40px;
+    height: 40px;
 }
 
-.highlight-card__content h4 {
-    font-size: var(--font-size-lg);
+.expert-stat-card__content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.expert-stat-card__number {
+    font-size: var(--font-size-3xl);
     font-weight: 700;
-    color: var(--text-primary);
-    margin-bottom: var(--spacing-xs);
+    color: var(--primary-color);
+    line-height: 1;
 }
 
-.highlight-card__content p {
+.expert-stat-card__label {
     font-size: var(--font-size-sm);
     color: var(--text-secondary);
-    line-height: 1.5;
-    margin: 0;
+    font-weight: 500;
 }
+
 
 /* Responsive Design for Expert Insights */
 @media (max-width: 768px) {
-    .expert-highlights {
+    .expert-stats-cards {
         grid-template-columns: 1fr;
         gap: var(--spacing-md);
     }
     
-    .highlight-card {
+    .expert-stat-card {
         padding: var(--spacing-md);
     }
     
-    .highlight-card__icon {
-        width: 40px;
-        height: 40px;
+    .expert-stat-card__icon {
+        width: 48px;
+        height: 48px;
     }
     
-    .highlight-card__icon svg {
-        width: 40px;
-        height: 40px;
+    .expert-stat-card__number {
+        font-size: var(--font-size-2xl);
     }
     
     .panels-grid {

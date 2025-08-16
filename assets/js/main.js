@@ -558,6 +558,34 @@ window.addEventListener('error', function(e) {
     console.error('JavaScript Error:', e.error);
 });
 
+// ===== Q&A TOGGLE FUNCTION (Expert Insights) =====
+function toggleQA(button) {
+    const qaItem = button.closest('.qa-item');
+    const answer = qaItem.querySelector('.qa-answer');
+    const toggle = button.querySelector('.qa-toggle');
+    const isOpen = qaItem.classList.contains('qa-item--open');
+    
+    // Close all other Q&A items
+    document.querySelectorAll('.qa-item--open').forEach(item => {
+        if (item !== qaItem) {
+            item.classList.remove('qa-item--open');
+            item.querySelector('.qa-toggle').textContent = '+';
+        }
+    });
+    
+    // Toggle current item
+    if (isOpen) {
+        qaItem.classList.remove('qa-item--open');
+        toggle.textContent = '+';
+    } else {
+        qaItem.classList.add('qa-item--open');
+        toggle.textContent = '−';
+    }
+}
+
+// Make toggleQA available globally
+window.toggleQA = toggleQA;
+
 // ===== EXPORT FOR MODULE USAGE =====
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = {
@@ -566,6 +594,7 @@ if (typeof module !== 'undefined' && module.exports) {
         initializeCounters,
         initializeCharts,
         initializeSmoothScroll,
+        toggleQA,
         charts,
         counters
     };
