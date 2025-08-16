@@ -51,6 +51,16 @@
             margin-bottom: var(--spacing-xxl);
         }
         
+        .demographics-top {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: var(--spacing-xl);
+        }
+        
+        .demographics-bottom {
+            width: 100%;
+        }
+        
         .demo-card {
             background: white;
             border-radius: var(--radius-lg);
@@ -660,8 +670,13 @@
         }
         
         @media (max-width: 768px) {
-            .demographics-grid,
+            .demographics-top,
             .behavior-grid {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-lg);
+            }
+            
+            .demographics-grid {
                 gap: var(--spacing-lg);
             }
             
@@ -828,8 +843,9 @@
                         <h3 class="demographics-overview__title">차 음료 소비자 프로필</h3>
                         
                         <div class="demographics-grid">
-                            <!-- Age Distribution -->
-                            <div class="demo-card demo-card--age">
+                            <div class="demographics-top">
+                                <!-- Age Distribution -->
+                                <div class="demo-card demo-card--age">
                                 <div class="demo-card__header">
                                     <h4 class="demo-card__title">연령대별 분포</h4>
                                     <span class="demo-card__subtitle">2024년 기준</span>
@@ -908,9 +924,11 @@
                                     </div>
                                 </div>
                             </div>
+                            </div>
                             
-                            <!-- Lifestyle Segments -->
-                            <div class="demo-card demo-card--lifestyle">
+                            <div class="demographics-bottom">
+                                <!-- Lifestyle Segments -->
+                                <div class="demo-card demo-card--lifestyle">
                                 <div class="demo-card__header">
                                     <h4 class="demo-card__title">라이프스타일 세그먼트</h4>
                                     <span class="demo-card__subtitle">주요 소비자 유형</span>
@@ -965,6 +983,7 @@
                                         <span class="segment-item__percentage">15%</span>
                                     </div>
                                 </div>
+                            </div>
                             </div>
                         </div>
                     </div>
