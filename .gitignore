@@ -105,3 +105,4 @@ testing/
 .vercel
 .netlify
 .firebase.git-credentials
+.git-credentials
