@@ -1,0 +1,43 @@
+<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
+  <!-- Convert to PNG-compatible format -->
+  <rect width="1200" height="630" fill="#f8fffe"/>
+  
+  <!-- Main content background -->
+  <rect x="100" y="100" width="1000" height="430" fill="white" stroke="#42886B" stroke-width="3" rx="15"/>
+  
+  <!-- Title -->
+  <text x="600" y="200" text-anchor="middle" font-family="Arial, sans-serif" font-size="52" font-weight="bold" fill="#2c5f41">
+    2024 차 음료 트렌드
+  </text>
+  
+  <!-- Subtitle -->
+  <text x="600" y="260" text-anchor="middle" font-family="Arial, sans-serif" font-size="36" font-weight="500" fill="#42886B">
+    시장 분석 대시보드
+  </text>
+  
+  <!-- Stats boxes -->
+  <!-- RTD Growth -->
+  <rect x="200" y="320" width="200" height="100" fill="#42886B" rx="8"/>
+  <text x="300" y="350" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="white">RTD 시장</text>
+  <text x="300" y="380" text-anchor="middle" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="white">37%↑</text>
+  <text x="300" y="405" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="white">성장률</text>
+  
+  <!-- Market Size -->
+  <rect x="450" y="320" width="200" height="100" fill="#7FB069" rx="8"/>
+  <text x="550" y="350" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="white">시장 규모</text>
+  <text x="550" y="380" text-anchor="middle" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="white">3.7조원</text>
+  <text x="550" y="405" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="white">2024년</text>
+  
+  <!-- Target Demo -->
+  <rect x="700" y="320" width="200" height="100" fill="#B8D4C7" rx="8"/>
+  <text x="800" y="350" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#2c5f41">주요 고객</text>
+  <text x="800" y="380" text-anchor="middle" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#2c5f41">20-30대</text>
+  <text x="800" y="405" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#2c5f41">42%</text>
+  
+  <!-- Brand -->
+  <text x="600" y="480" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="#42886B">Tea Trend 2024 | 데이터 기반 시장 분석</text>
+  
+  <!-- Simple decorative elements -->
+  <circle cx="150" cy="150" r="25" fill="#42886B" opacity="0.2"/>
+  <circle cx="1050" cy="480" r="20" fill="#7FB069" opacity="0.3"/>
+</svg>

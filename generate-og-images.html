@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>OG Image Generator</title>
+</head>
+<body>
+    <canvas id="canvas" width="1200" height="630" style="border: 1px solid #ccc;"></canvas>
+    <br>
+    <button onclick="generateDashboard()">Dashboard Image</button>
+    <button onclick="generateRTD()">RTD Trends Image</button>
+    <button onclick="downloadImage()">Download</button>
+
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+
+        function generateDashboard() {
+            // Clear canvas
+            ctx.fillStyle = '#f8fffe';
+            ctx.fillRect(0, 0, 1200, 630);
+            
+            // Main background
+            ctx.fillStyle = '#ffffff';
+            ctx.fillRect(100, 100, 1000, 430);
+            ctx.strokeStyle = '#42886B';
+            ctx.lineWidth = 2;
+            ctx.strokeRect(100, 100, 1000, 430);
+            
+            // Title
+            ctx.fillStyle = '#2c5f41';
+            ctx.font = 'bold 48px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillText('2024 차 음료 트렌드', 600, 200);
+            
+            // Subtitle
+            ctx.fillStyle = '#42886B';
+            ctx.font = '32px Arial';
+            ctx.fillText('시장 분석 대시보드', 600, 260);
+            
+            // Stats boxes
+            // RTD Growth
+            ctx.fillStyle = '#42886B';
+            ctx.fillRect(200, 320, 200, 100);
+            ctx.fillStyle = '#ffffff';
+            ctx.font = 'bold 24px Arial';
+            ctx.fillText('RTD 시장', 300, 350);
+            ctx.font = 'bold 36px Arial';
+            ctx.fillText('37%↑', 300, 385);
+            ctx.font = '16px Arial';
+            ctx.fillText('성장률', 300, 405);
+            
+            // Market Size
+            ctx.fillStyle = '#7FB069';
+            ctx.fillRect(450, 320, 200, 100);
+            ctx.fillStyle = '#ffffff';
+            ctx.font = 'bold 24px Arial';
+            ctx.fillText('시장 규모', 550, 350);
+            ctx.font = 'bold 36px Arial';
+            ctx.fillText('3.7조원', 550, 385);
+            ctx.font = '16px Arial';
+            ctx.fillText('2024년', 550, 405);
+            
+            // Target Demo
+            ctx.fillStyle = '#B8D4C7';
+            ctx.fillRect(700, 320, 200, 100);
+            ctx.fillStyle = '#2c5f41';
+            ctx.font = 'bold 24px Arial';
+            ctx.fillText('주요 고객', 800, 350);
+            ctx.font = 'bold 36px Arial';
+            ctx.fillText('20-30대', 800, 385);
+            ctx.font = '16px Arial';
+            ctx.fillText('42%', 800, 405);
+            
+            // Brand
+            ctx.fillStyle = '#42886B';
+            ctx.font = '18px Arial';
+            ctx.fillText('Tea Trend 2024 | 데이터 기반 시장 분석', 600, 480);
+        }
+
+        function generateRTD() {
+            // Clear canvas
+            ctx.fillStyle = '#f0faf7';
+            ctx.fillRect(0, 0, 1200, 630);
+            
+            // Main background
+            ctx.fillStyle = '#ffffff';
+            ctx.fillRect(100, 100, 1000, 430);
+            ctx.strokeStyle = '#7FB069';
+            ctx.lineWidth = 2;
+            ctx.strokeRect(100, 100, 1000, 430);
+            
+            // Title
+            ctx.fillStyle = '#2c5f41';
+            ctx.font = 'bold 44px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillText('RTD 차 음료 트렌드', 600, 180);
+            
+            // Subtitle
+            ctx.fillStyle = '#7FB069';
+            ctx.font = '28px Arial';
+            ctx.fillText('Ready-to-Drink 시장 분석', 600, 220);
+            
+            // Simple chart bars
+            const barData = [30, 40, 60, 90, 110];
+            const barColors = ['#B8D4C7', '#7FB069', '#42886B', '#42886B', '#2c5f41'];
+            
+            for (let i = 0; i < barData.length; i++) {
+                ctx.fillStyle = barColors[i];
+                ctx.fillRect(250 + i * 120, 410 - barData[i], 60, barData[i]);
+                
+                // Year labels
+                ctx.fillStyle = '#666666';
+                ctx.font = '14px Arial';
+                ctx.fillText(2020 + i, 280 + i * 120, 430);
+            }
+            
+            // Growth stat
+            ctx.fillStyle = '#42886B';
+            ctx.fillRect(700, 280, 250, 110);
+            ctx.fillStyle = '#ffffff';
+            ctx.font = 'bold 20px Arial';
+            ctx.fillText('연간 성장률', 825, 310);
+            ctx.font = 'bold 48px Arial';
+            ctx.fillText('37%', 825, 350);
+            ctx.font = '16px Arial';
+            ctx.fillText('2024년 기준', 825, 375);
+            
+            // Brand
+            ctx.fillStyle = '#7FB069';
+            ctx.font = '18px Arial';
+            ctx.fillText('Tea Trend 2024 | RTD 시장 전문 분석', 600, 480);
+        }
+
+        function downloadImage() {
+            const link = document.createElement('a');
+            link.download = 'og-image.png';
+            link.href = canvas.toDataURL();
+            link.click();
+        }
+
+        // Generate default dashboard image
+        generateDashboard();
+    </script>
+</body>
+</html>
