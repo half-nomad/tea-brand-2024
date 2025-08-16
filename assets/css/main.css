@@ -355,7 +355,7 @@ body {
 /* ===== HERO SECTION ===== */
 .hero {
     position: relative;
-    min-height: 100vh;
+    min-height: calc(100vh - 80px); /* 헤더 높이를 뺀 실제 가용 높이 */
     display: flex;
     align-items: center;
     background: var(--background-light);
@@ -479,7 +479,7 @@ body {
 
 /* Hero Secondary (서브페이지용) */
 .hero--secondary {
-    min-height: 60vh; /* 서브페이지는 높이를 조금 줄임 */
+    min-height: calc(80vh - 80px); /* 서브페이지는 높이를 조금 줄임 */
 }
 
 .hero--secondary .hero__content {
@@ -488,14 +488,14 @@ body {
 
 @media (max-width: 768px) {
     .hero {
-        min-height: 100vh;
-        min-height: 100svh; /* Safe area 고려한 뷰포트 높이 */
+        min-height: calc(100vh - 70px); /* 모바일 헤더 높이를 뺀 실제 높이 */
+        min-height: calc(100svh - 70px); /* Safe area 고려한 뷰포트 높이 */
         padding-top: 70px; /* 모바일 헤더 높이 조정 */
     }
     
     .hero--secondary {
-        min-height: 70vh; /* 모바일 서브페이지 높이 */
-        min-height: 70svh;
+        min-height: calc(80vh - 70px); /* 모바일 서브페이지 높이 */
+        min-height: calc(80svh - 70px);
     }
     
     .hero__content {
