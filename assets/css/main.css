@@ -1226,8 +1226,80 @@ body {
     margin: 0;
 }
 
+/* Expert Highlights (Hero Section Enhancement) */
+.expert-highlights {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-xl);
+}
+
+.highlight-card {
+    background: white;
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    box-shadow: 0 4px 20px var(--shadow-light);
+    border: 1px solid var(--border-light);
+    transition: all var(--transition-normal);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.highlight-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px var(--shadow-medium);
+}
+
+.highlight-card__icon {
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.highlight-card__icon svg {
+    width: 48px;
+    height: 48px;
+}
+
+.highlight-card__content h4 {
+    font-size: var(--font-size-lg);
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-xs);
+}
+
+.highlight-card__content p {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin: 0;
+}
+
 /* Responsive Design for Expert Insights */
 @media (max-width: 768px) {
+    .expert-highlights {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+    
+    .highlight-card {
+        padding: var(--spacing-md);
+    }
+    
+    .highlight-card__icon {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .highlight-card__icon svg {
+        width: 40px;
+        height: 40px;
+    }
+    
     .panels-grid {
         grid-template-columns: 1fr;
         gap: var(--spacing-lg);
