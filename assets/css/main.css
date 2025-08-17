@@ -499,7 +499,7 @@ body {
     }
     
     .hero__content {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr !important;
         gap: var(--spacing-xl);
         text-align: center;
         padding: var(--spacing-xl) 0;
@@ -520,6 +520,18 @@ body {
         flex-direction: column;
         align-items: center;
         gap: var(--spacing-sm);
+    }
+    
+    /* 모바일에서 캔버스 요소 반응형 처리 */
+    .hero__visual {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+    
+    .hero__visual canvas {
+        width: 100% !important;
+        height: auto !important;
+        max-width: 100% !important;
     }
 }
 
